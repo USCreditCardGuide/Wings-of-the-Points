@@ -540,7 +540,7 @@
     } else {
       SVG.select(`${dataId} rect.airlineLogo`).fill(SVG('fake').image(`https://www.gstatic.com/flights/airline_logos/35px/${iata}.png`, 15, 15));
     }
-    SVG.select(`${dataId} rect.allianceLogo`).fill(SVG('fake').image(`http://cdn.yeekapp.com/wings/${o.type}.png?x-oss-process=image/resize,w_20,limit_1/format,jpg/interlace,1`, 15, 15));
+    SVG.select(`${dataId} rect.allianceLogo`).fill(SVG('fake').image(`logos/${o.type}.png?x-oss-process=image/resize,w_20,limit_1/format,jpg/interlace,1`, 15, 15));
   })
 
   </script>

@@ -1,6 +1,6 @@
 # Wings of the Points
 
-This is a chart to visually represent the transfer partnerships between rewards programs of US credit cards and airlines. 
+This is a chart to visually represent the transfer partnerships between rewards programs of US credit cards and airlines.
 
 Live Demo -> [https://physixfan.github.io/Wings-of-the-Points/index.html](https://physixfan.github.io/Wings-of-the-Points/index.html)
 
@@ -8,7 +8,7 @@ Live Demo -> [https://physixfan.github.io/Wings-of-the-Points/index.html](https:
 ## Usage
 * Move your mouse over the point name or airline name to highlight transfer relationships. 
 * Move your mouse over any line connecting a point and a mile to see the transfer ratio. 
-* The airlines are grouped by alliances. 
+* The airlines are grouped by alliances, and inside an alliance the airlines are sorted by alphabetical order. 
 * You can use ctrl+F (or cmd+F) to quickly find an airline.
 
 ## Note
