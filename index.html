@@ -92,11 +92,11 @@
     'fallback':            '#9f9fa3'
   };
   var systems = [
-    { sc: 'citi', name: 'TYP - Citi ThankYou Points'},
     { sc: 'chase', name: 'UR - Chase Ultimate Rewards Points'},
     { sc: 'amex', name: 'MR - AmEx Membership Rewards Points'},
-    { sc: 'spg', name: 'Starwood'},
-    { sc: 'marriott', name: 'Marriott'},
+    { sc: 'citi', name: 'TYP - Citi ThankYou Points'},
+    { sc: 'marriott', name: 'MAR - Marriott Bonvoy Points'},
+    { sc: 'spg', name: 'Starwood (need to change to C1)'},
     { sc: 'none', name: 'N/A'},
   ]
   var airlines = [
@@ -239,46 +239,45 @@
   }, {
     type: 'oneworld',
     relations: [
-      { s: 'spg', t: 'ab'}, { s: 'marriott', t: 'ab'},
-      { s: 'spg', t: 'aa'}, { s: 'marriott', t: 'aa'},
-      { s: 'spg', t: 'ba'}, { s: 'chase', t: 'ba'}, { s: 'amex', t: 'ba'}, { s: 'marriott', t: 'ba'},
-      { s: 'spg', t: 'cx'}, { s: 'citi', t: 'cx'}, { s: 'marriott', t: 'cx'}, { s: 'amex', t: 'cx'},
-      { s: 'none', t: 'ay'},
-      { s: 'amex', t: 'ib'}, { s: 'marriott', t: 'ib'},
-      { s: 'spg', t: 'jl'}, { s: 'marriott', t: 'jl'},
-      { s: 'spg', t: 'la'}, { s: 'marriott', t: 'la'},
-      { s: 'none', t: 'jj'},
-      { s: 'citi', t: 'mh'},
-      { s: 'citi', t: 'qf'}, { s: 'marriott', t: 'qf'},
-      { s: 'citi', t: 'qr'}, { s: 'spg', t: 'qr'}, { s: 'marriott', t: 'qr'},
-      { s: 'none', t: 'rj'},
-      { s: 'none', t: 's7'},
-      { s: 'none', t: 'ul'},
+      [{ s: 'amex', t: 'ab', f: 0 }, { s: 'citi', t: 'ab', f: 0 }, { s: 'chase', t: 'ab', f: 0 }, { s: 'spg', t: 'ab', f: 1 }, { s: 'marriott', t: 'ab', f: 1 }],
+      [{ s: 'amex', t: 'aa', f: 0 }, { s: 'citi', t: 'aa', f: 0 }, { s: 'chase', t: 'aa', f: 0 }, { s: 'spg', t: 'aa', f: 1 }, { s: 'marriott', t: 'aa', f: 1 }],
+      [{ s: 'amex', t: 'ba', f: 1 }, { s: 'citi', t: 'ba', f: 0 }, { s: 'chase', t: 'ba', f: 1 }, { s: 'spg', t: 'ba', f: 1 }, { s: 'marriott', t: 'ba', f: 1 }],
+      [{ s: 'amex', t: 'cx', f: 1 }, { s: 'citi', t: 'cx', f: 1 }, { s: 'chase', t: 'cx', f: 0 }, { s: 'spg', t: 'cx', f: 1 }, { s: 'marriott', t: 'cx', f: 1 }],
+      [{ s: 'amex', t: 'ay', f: 0 }, { s: 'citi', t: 'ay', f: 0 }, { s: 'chase', t: 'ay', f: 0 }, { s: 'spg', t: 'ay', f: 0 }, { s: 'marriott', t: 'ay', f: 0 }],
+      [{ s: 'amex', t: 'ib', f: 1 }, { s: 'citi', t: 'ib', f: 0 }, { s: 'chase', t: 'ib', f: 0 }, { s: 'spg', t: 'ib', f: 0 }, { s: 'marriott', t: 'ib', f: 1 }],
+      [{ s: 'amex', t: 'jl', f: 0 }, { s: 'citi', t: 'jl', f: 0 }, { s: 'chase', t: 'jl', f: 0 }, { s: 'spg', t: 'jl', f: 1 }, { s: 'marriott', t: 'jl', f: 1 }],
+      [{ s: 'amex', t: 'la', f: 0 }, { s: 'citi', t: 'la', f: 0 }, { s: 'chase', t: 'la', f: 0 }, { s: 'spg', t: 'la', f: 1 }, { s: 'marriott', t: 'la', f: 1 }],
+      [{ s: 'amex', t: 'jj', f: 0 }, { s: 'citi', t: 'jj', f: 0 }, { s: 'chase', t: 'jj', f: 0 }, { s: 'spg', t: 'jj', f: 0 }, { s: 'marriott', t: 'jj', f: 0 }],
+      [{ s: 'amex', t: 'mh', f: 0 }, { s: 'citi', t: 'mh', f: 1 }, { s: 'chase', t: 'mh', f: 0 }, { s: 'spg', t: 'mh', f: 0 }, { s: 'marriott', t: 'mh', f: 0 }],
+      [{ s: 'amex', t: 'qf', f: 0 }, { s: 'citi', t: 'qf', f: 1 }, { s: 'chase', t: 'qf', f: 0 }, { s: 'spg', t: 'qf', f: 0 }, { s: 'marriott', t: 'qf', f: 1 }],
+      [{ s: 'amex', t: 'qr', f: 0 }, { s: 'citi', t: 'qr', f: 1 }, { s: 'chase', t: 'qr', f: 0 }, { s: 'spg', t: 'qr', f: 1 }, { s: 'marriott', t: 'qr', f: 1 }],
+      [{ s: 'amex', t: 'rj', f: 0 }, { s: 'citi', t: 'rj', f: 0 }, { s: 'chase', t: 'rj', f: 0 }, { s: 'spg', t: 'rj', f: 0 }, { s: 'marriott', t: 'rj', f: 0 }],
+      [{ s: 'amex', t: 's7', f: 0 }, { s: 'citi', t: 's7', f: 0 }, { s: 'chase', t: 's7', f: 0 }, { s: 'spg', t: 's7', f: 0 }, { s: 'marriott', t: 's7', f: 0 }],
+      [{ s: 'amex', t: 'ul', f: 0 }, { s: 'citi', t: 'ul', f: 0 }, { s: 'chase', t: 'ul', f: 0 }, { s: 'spg', t: 'ul', f: 0 }, { s: 'marriott', t: 'ul', f: 0 }],
     ]
-
   }, {
     type: 'skyteam',
     relations: [
-      { s: 'marriott', t: 'su'},
-      { s: 'none', t: 'ar'},
-      { s: 'spg', t: 'am'}, { s: 'amex', t: 'am'}, { s: 'marriott', t: 'am'},
-      { s: 'none', t: 'ux'},
-      { s: 'spg', t: 'af'}, { s: 'amex', t: 'af'}, { s: 'citi', t: 'af'}, { s: 'chase', t: 'af'}, { s: 'marriott', t: 'af'},
-      { s: 'spg', t: 'az'}, { s: 'amex', t: 'az'},
-      { s: 'none', t: 'ci'},
-      { s: 'spg', t: 'mu'}, { s: 'marriott', t: 'mu'},
-      { s: 'spg', t: 'cz'}, { s: 'marriott', t: 'cz'},
-      { s: 'none', t: 'ok'},
-      { s: 'spg', t: 'dl'}, { s: 'amex', t: 'dl'}, { s: 'marriott', t: 'dl'},
-      { s: 'citi', t: 'ga'},
-      { s: 'none', t: 'kq'},
-      { s: 'spg', t: 'kl'}, { s: 'amex', t: 'kl'}, { s: 'citi', t: 'kl'}, { s: 'chase', t: 'kl'}, { s: 'marriott', t: 'kl'},
-      { s: 'spg', t: 'ke'}, { s: 'chase', t: 'ke'}, { s: 'marriott', t: 'ke'},
-      { s: 'none', t: 'me'},
-      { s: 'spg', t: 'sv'}, { s: 'marriott', t: 'sv'},
-      { s: 'none', t: 'ro'},
-      { s: 'none', t: 'vn'},
-      { s: 'none', t: 'mf'},
+      [{ s: 'amex', t: 'su', f: 0 }, { s: 'citi', t: 'su', f: 0 }, { s: 'chase', t: 'su', f: 0 }, { s: 'spg', t: 'su', f: 0 }, { s: 'marriott', t: 'su', f: 1 }],
+      [{ s: 'amex', t: 'ar', f: 0 }, { s: 'citi', t: 'ar', f: 0 }, { s: 'chase', t: 'ar', f: 0 }, { s: 'spg', t: 'ar', f: 0 }, { s: 'marriott', t: 'ar', f: 0 }],
+      [{ s: 'amex', t: 'am', f: 1 }, { s: 'citi', t: 'am', f: 0 }, { s: 'chase', t: 'am', f: 0 }, { s: 'spg', t: 'am', f: 1 }, { s: 'marriott', t: 'am', f: 1 }],
+      [{ s: 'amex', t: 'ux', f: 0 }, { s: 'citi', t: 'ux', f: 0 }, { s: 'chase', t: 'ux', f: 0 }, { s: 'spg', t: 'ux', f: 0 }, { s: 'marriott', t: 'ux', f: 0 }],
+      [{ s: 'amex', t: 'af', f: 1 }, { s: 'citi', t: 'af', f: 1 }, { s: 'chase', t: 'af', f: 1 }, { s: 'spg', t: 'af', f: 1 }, { s: 'marriott', t: 'af', f: 1 }],
+      [{ s: 'amex', t: 'az', f: 1 }, { s: 'citi', t: 'az', f: 0 }, { s: 'chase', t: 'az', f: 0 }, { s: 'spg', t: 'az', f: 1 }, { s: 'marriott', t: 'az', f: 0 }],
+      [{ s: 'amex', t: 'ci', f: 0 }, { s: 'citi', t: 'ci', f: 0 }, { s: 'chase', t: 'ci', f: 0 }, { s: 'spg', t: 'ci', f: 0 }, { s: 'marriott', t: 'ci', f: 0 }],
+      [{ s: 'amex', t: 'mu', f: 0 }, { s: 'citi', t: 'mu', f: 0 }, { s: 'chase', t: 'mu', f: 0 }, { s: 'spg', t: 'mu', f: 1 }, { s: 'marriott', t: 'mu', f: 1 }],
+      [{ s: 'amex', t: 'cz', f: 0 }, { s: 'citi', t: 'cz', f: 0 }, { s: 'chase', t: 'cz', f: 0 }, { s: 'spg', t: 'cz', f: 1 }, { s: 'marriott', t: 'cz', f: 1 }],
+      [{ s: 'amex', t: 'ok', f: 0 }, { s: 'citi', t: 'ok', f: 0 }, { s: 'chase', t: 'ok', f: 0 }, { s: 'spg', t: 'ok', f: 0 }, { s: 'marriott', t: 'ok', f: 0 }],
+      [{ s: 'amex', t: 'dl', f: 1 }, { s: 'citi', t: 'dl', f: 0 }, { s: 'chase', t: 'dl', f: 0 }, { s: 'spg', t: 'dl', f: 1 }, { s: 'marriott', t: 'dl', f: 1 }],
+      [{ s: 'amex', t: 'ga', f: 0 }, { s: 'citi', t: 'ga', f: 1 }, { s: 'chase', t: 'ga', f: 0 }, { s: 'spg', t: 'ga', f: 0 }, { s: 'marriott', t: 'ga', f: 0 }],
+      [{ s: 'amex', t: 'kq', f: 0 }, { s: 'citi', t: 'kq', f: 0 }, { s: 'chase', t: 'kq', f: 0 }, { s: 'spg', t: 'kq', f: 0 }, { s: 'marriott', t: 'kq', f: 0 }],
+      [{ s: 'amex', t: 'kl', f: 1 }, { s: 'citi', t: 'kl', f: 1 }, { s: 'chase', t: 'kl', f: 1 }, { s: 'spg', t: 'kl', f: 1 }, { s: 'marriott', t: 'kl', f: 1 }],
+      [{ s: 'amex', t: 'ke', f: 0 }, { s: 'citi', t: 'ke', f: 0 }, { s: 'chase', t: 'ke', f: 0 }, { s: 'spg', t: 'ke', f: 1 }, { s: 'marriott', t: 'ke', f: 1 }],
+      [{ s: 'amex', t: 'me', f: 0 }, { s: 'citi', t: 'me', f: 0 }, { s: 'chase', t: 'me', f: 0 }, { s: 'spg', t: 'me', f: 0 }, { s: 'marriott', t: 'me', f: 0 }],
+      [{ s: 'amex', t: 'sv', f: 0 }, { s: 'citi', t: 'sv', f: 0 }, { s: 'chase', t: 'sv', f: 0 }, { s: 'spg', t: 'sv', f: 1 }, { s: 'marriott', t: 'sv', f: 1 }],
+      [{ s: 'amex', t: 'ro', f: 0 }, { s: 'citi', t: 'ro', f: 0 }, { s: 'chase', t: 'ro', f: 0 }, { s: 'spg', t: 'ro', f: 0 }, { s: 'marriott', t: 'ro', f: 0 }],
+      [{ s: 'amex', t: 'vn', f: 0 }, { s: 'citi', t: 'vn', f: 0 }, { s: 'chase', t: 'vn', f: 0 }, { s: 'spg', t: 'vn', f: 0 }, { s: 'marriott', t: 'vn', f: 0 }],
+      [{ s: 'amex', t: 'mf', f: 0 }, { s: 'citi', t: 'mf', f: 0 }, { s: 'chase', t: 'mf', f: 0 }, { s: 'spg', t: 'mf', f: 0 }, { s: 'marriott', t: 'mf', f: 0 }],
     ]
   }, {
     type: 'starAlliance',
@@ -292,7 +291,7 @@
       [{ s: 'amex', t: 'nh', f: 1 }, { s: 'citi', t: 'nh', f: 0 }, { s: 'chase', t: 'nh', f: 0 }, { s: 'spg', t: 'nh', f: 1 }, { s: 'marriott', t: 'nh', f: 0 }],
       [{ s: 'amex', t: 'oz', f: 0 }, { s: 'citi', t: 'oz', f: 0 }, { s: 'chase', t: 'oz', f: 0 }, { s: 'spg', t: 'oz', f: 1 }, { s: 'marriott', t: 'oz', f: 1 }],
       [{ s: 'amex', t: 'os', f: 0 }, { s: 'citi', t: 'os', f: 0 }, { s: 'chase', t: 'os', f: 0 }, { s: 'spg', t: 'os', f: 0 }, { s: 'marriott', t: 'os', f: 0 }],
-      [{ s: 'amex', t: 'av', f: 0 }, { s: 'citi', t: 'av', f: 0 }, { s: 'chase', t: 'av', f: 0 }, { s: 'spg', t: 'av', f: 1 }, { s: 'marriott', t: 'av', f: 1 }],
+      [{ s: 'amex', t: 'av', f: 1 }, { s: 'citi', t: 'av', f: 1 }, { s: 'chase', t: 'av', f: 0 }, { s: 'spg', t: 'av', f: 1 }, { s: 'marriott', t: 'av', f: 1 }],
       [{ s: 'amex', t: 'sn', f: 0 }, { s: 'citi', t: 'sn', f: 0 }, { s: 'chase', t: 'sn', f: 0 }, { s: 'spg', t: 'sn', f: 0 }, { s: 'marriott', t: 'sn', f: 0 }],
       [{ s: 'amex', t: 'cm', f: 0 }, { s: 'citi', t: 'cm', f: 0 }, { s: 'chase', t: 'cm', f: 0 }, { s: 'spg', t: 'cm', f: 0 }, { s: 'marriott', t: 'cm', f: 1 }],
       [{ s: 'amex', t: 'ou', f: 0 }, { s: 'citi', t: 'ou', f: 0 }, { s: 'chase', t: 'ou', f: 0 }, { s: 'spg', t: 'ou', f: 0 }, { s: 'marriott', t: 'ou', f: 0 }],
@@ -314,12 +313,20 @@
   }];
 
   var flatRelations = _.flattenDeep([
-    _.map(_.find(relations, o => o.type === 'oneworld').relations, o => Object.assign(o, { type: 'oneworld'})),
-    _.map(_.find(relations, o => o.type === 'skyteam').relations, o => Object.assign(o, { type: 'skyteam'})),
     _.map(_.find(relations, o => o.type === 'nonAliance').relations, o => {
       if (_.filter(o, oo => oo.f === 1).length > 0) {
         return _.map(_.filter(o, oo => oo.f === 1), oo => Object.assign(oo, { type: 'nonAliance'}));
       } else { return { s: 'none', t: o[0].t, type: 'nonAliance' }; }
+    }),                                    
+    _.map(_.find(relations, o => o.type === 'oneworld').relations, o => {
+      if (_.filter(o, oo => oo.f === 1).length > 0) {
+        return _.map(_.filter(o, oo => oo.f === 1), oo => Object.assign(oo, { type: 'oneworld'}));
+      } else { return { s: 'none', t: o[0].t, type: 'oneworld' }; }
+    }),
+    _.map(_.find(relations, o => o.type === 'skyteam').relations, o => {
+      if (_.filter(o, oo => oo.f === 1).length > 0) {
+        return _.map(_.filter(o, oo => oo.f === 1), oo => Object.assign(oo, { type: 'skyteam'}));
+      } else { return { s: 'none', t: o[0].t, type: 'skyteam' }; }
     }),
     _.map(_.find(relations, o => o.type === 'starAlliance').relations, o => {
       if (_.filter(o, oo => oo.f === 1).length > 0) {
@@ -364,6 +371,7 @@
 
   var rates = {
     "citi"    : {
+      av: "1:1",
       cx: "1:1",
       ey: "1:1",
       br: "1:1",
@@ -389,6 +397,7 @@
       kl: "1:1"
     },
     "amex"    : {
+      av: "1:1",
       ek: "1:1",
       ly: "1:0.02",
       ey: "1:1",
