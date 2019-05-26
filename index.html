@@ -535,11 +535,7 @@
     const iata = o.name.toLowerCase().match(/\[.{2}\]/)[0].replace('[', '').replace(']', '').toUpperCase();
     const dataId = `[data-node-id="${o.name.toLowerCase().replace(/\s/g, '-')}"]`
     console.log(`${dataId} rect`, o);
-    if(iata === 'WN') {
-      SVG.select(`${dataId} rect.airlineLogo`).fill(SVG('fake').image(`https://lh3.googleusercontent.com/IpiXqIBr4B99QOtMfEvSDuexAjfU_4_iIoavrTl_b4k9UGXWFONBvnScETl0UDsVdg=w300`, 15, 15));
-    } else {
-      SVG.select(`${dataId} rect.airlineLogo`).fill(SVG('fake').image(`https://www.gstatic.com/flights/airline_logos/35px/${iata}.png`, 15, 15));
-    }
+    SVG.select(`${dataId} rect.airlineLogo`).fill(SVG('fake').image(`logos/${iata}.png`, 15, 15));
     SVG.select(`${dataId} rect.allianceLogo`).fill(SVG('fake').image(`logos/${o.type}.png?x-oss-process=image/resize,w_20,limit_1/format,jpg/interlace,1`, 15, 15));
   })
 
