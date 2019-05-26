@@ -19,6 +19,7 @@ After merging with SPG in Aug 2018, you can now transfer Marriott points to airl
 
 ### 2019-05-25
 1. Forked from Siriolabs by physixfan and keep this repo up to date.
+2. Added C1 - Capital One Miles transfer partners.
 2. Added Aer Lingus (EI) to AmEx MR as they have a new partnership as of 06/2018.
 3. Added Avianca (AV) to AmEx MR as they have a new partnership as of 11/2018.
 
