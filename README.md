@@ -13,7 +13,7 @@ Live Demo -> [https://physixfan.github.io/Wings-of-the-Points/index.html](https:
 
 ## Note
 
-After merging with SPG in Aug 2018, you can now transfer Marriott points to airline miles at 3 to 1 ratio with most programs, and as a bonus, Marriott will add 15,000 points for every 60,000 points you transfer to airline miles. This 3:1.25 ratio is equivalent to the previous SPG program.
+* The Marriott Bonvoy points can be transferred to airlines miles at 3:1 ratio with most programs. Plus, Marriott will add 5,000 miles for every 60,000 Marriott Bonvoy points you transfer to airline miles. Therefore we count the ratio as 3:1.25. It is basically equivalent to the previous SPG program (1:1.25 ratio).
 
 ## Change Log
 
