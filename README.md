@@ -12,7 +12,7 @@ Live Demo -> [https://physixfan.github.io/Wings-of-the-Points/index.html](https:
 * You can use ctrl+F (or cmd+F) to quickly find an airline.
 
 ## Note
-
+* Chase UR is short for Chase Ultimate Rewards points; AmEx MR is short for American Express Membership Rewards points; Citi TYP is short for Citi ThankYou Points.
 * The Marriott Bonvoy points can be transferred to airlines miles at 3:1 ratio with most programs. Plus, Marriott will add 5,000 miles for every 60,000 Marriott Bonvoy points you transfer to airline miles. Therefore we count the ratio as 3:1.25. It is basically equivalent to the previous SPG program (1:1.25 ratio).
 
 ## Change Log
