@@ -6,6 +6,7 @@ Live Demo -> [https://physixfan.github.io/Wings-of-the-Points/index.html](https:
 
 
 ## Usage
+* It is better to view this chart on desktop. The screens on mobile devices are usually too narrow to have a good effect.
 * Move your mouse over the point name or airline name to highlight transfer relationships. 
 * Move your mouse over any line connecting a point and a mile to see the transfer ratio. 
 * The airlines are grouped by alliances, and inside an alliance the airlines are sorted by alphabetical order. 
