@@ -103,6 +103,7 @@
       airlines: [
         { color: '#1565C0', sc: 'ei', name: 'Aer Lingus', },
         { color: '#1565C0', sc: 'as', name: 'Alaska Airlines', },
+        { color: '#D84315', sc: 'cz', name: 'China Southern Airlines', },
         { color: '#1565C0', sc: 'ly', name: 'El Al', },
         { color: '#1565C0', sc: 'ek', name: 'Emirates', },
         { color: '#1565C0', sc: 'ey', name: 'Etihad', },
@@ -145,7 +146,6 @@
         { color: '#D84315', sc: 'az', name: 'Alitalia', },
         { color: '#D84315', sc: 'ci', name: 'China Airlines', },
         { color: '#D84315', sc: 'mu', name: 'China Eastern Airlines', },
-        { color: '#D84315', sc: 'cz', name: 'China Southern Airlines', },
         { color: '#D84315', sc: 'ok', name: 'Czech Airlines', },
         { color: '#D84315', sc: 'dl', name: 'Delta Air Lines', },
         { color: '#D84315', sc: 'ga', name: 'Garuda Indonesia', },
@@ -219,6 +219,7 @@
     relations: [
       [{ s: 'amex', t: 'ei', f: 1 }, { s: 'citi', t: 'ei', f: 0 }, { s: 'chase', t: 'ei', f: 1 }, { s: 'c1', t: 'ei', f: 0 }, { s: 'marriott', t: 'ei', f: 0 }],
       [{ s: 'amex', t: 'as', f: 0 }, { s: 'citi', t: 'as', f: 0 }, { s: 'chase', t: 'as', f: 0 }, { s: 'c1', t: 'as', f: 0 }, { s: 'marriott', t: 'as', f: 1 }],
+      [{ s: 'amex', t: 'cz', f: 0 }, { s: 'citi', t: 'cz', f: 0 }, { s: 'chase', t: 'cz', f: 0 }, { s: 'c1', t: 'cz', f: 0 }, { s: 'marriott', t: 'cz', f: 1 }],
       [{ s: 'amex', t: 'ek', f: 1 }, { s: 'citi', t: 'ek', f: 0 }, { s: 'chase', t: 'ek', f: 0 }, { s: 'c1', t: 'ek', f: 1 }, { s: 'marriott', t: 'ek', f: 1 }],
       [{ s: 'amex', t: 'ly', f: 1 }, { s: 'citi', t: 'ly', f: 0 }, { s: 'chase', t: 'ly', f: 0 }, { s: 'c1', t: 'ly', f: 0 }, { s: 'marriott', t: 'ly', f: 0 }],
       [{ s: 'amex', t: 'ey', f: 1 }, { s: 'citi', t: 'ey', f: 1 }, { s: 'chase', t: 'ey', f: 0 }, { s: 'c1', t: 'ey', f: 1 }, { s: 'marriott', t: 'ey', f: 1 }],
@@ -259,7 +260,6 @@
       [{ s: 'amex', t: 'az', f: 1 }, { s: 'citi', t: 'az', f: 0 }, { s: 'chase', t: 'az', f: 0 }, { s: 'c1', t: 'az', f: 1 }, { s: 'marriott', t: 'az', f: 1 }],
       [{ s: 'amex', t: 'ci', f: 0 }, { s: 'citi', t: 'ci', f: 0 }, { s: 'chase', t: 'ci', f: 0 }, { s: 'c1', t: 'ci', f: 0 }, { s: 'marriott', t: 'ci', f: 0 }],
       [{ s: 'amex', t: 'mu', f: 0 }, { s: 'citi', t: 'mu', f: 0 }, { s: 'chase', t: 'mu', f: 0 }, { s: 'c1', t: 'mu', f: 0 }, { s: 'marriott', t: 'mu', f: 1 }],
-      [{ s: 'amex', t: 'cz', f: 0 }, { s: 'citi', t: 'cz', f: 0 }, { s: 'chase', t: 'cz', f: 0 }, { s: 'c1', t: 'cz', f: 0 }, { s: 'marriott', t: 'cz', f: 1 }],
       [{ s: 'amex', t: 'ok', f: 0 }, { s: 'citi', t: 'ok', f: 0 }, { s: 'chase', t: 'ok', f: 0 }, { s: 'c1', t: 'ok', f: 0 }, { s: 'marriott', t: 'ok', f: 0 }],
       [{ s: 'amex', t: 'dl', f: 1 }, { s: 'citi', t: 'dl', f: 0 }, { s: 'chase', t: 'dl', f: 0 }, { s: 'c1', t: 'dl', f: 0 }, { s: 'marriott', t: 'dl', f: 1 }],
       [{ s: 'amex', t: 'ga', f: 0 }, { s: 'citi', t: 'ga', f: 1 }, { s: 'chase', t: 'ga', f: 0 }, { s: 'c1', t: 'ga', f: 0 }, { s: 'marriott', t: 'ga', f: 0 }],
