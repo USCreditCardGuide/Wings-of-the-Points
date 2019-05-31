@@ -18,6 +18,9 @@ Live Demo -> [https://physixfan.github.io/Wings-of-the-Points/index.html](https:
 
 ## Change Log
 
+### 2019-05-31
+1. Added Qantas (QF) to AmEx MR as they have a new partnership as of 05/2019.
+
 ### 2019-05-25
 1. Forked from [Siriolabs](https://github.com/Siriolabs/Wings-of-the-Points) by physixfan and keep this repo up to date.
 2. Added C1 - Capital One Miles transfer partners.
