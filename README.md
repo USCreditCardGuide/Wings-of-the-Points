@@ -21,6 +21,7 @@ Live Demo -> [https://physixfan.github.io/Wings-of-the-Points/index.html](https:
 ### 2019-06-07
 
 1. Lufthansa (LH) Miles and More program is no longer a transfer partner of Marriott Bonvoy as of 06/2019.
+2. Added the corresponding names of the frequent flyer program to the airlines.
 
 ### 2019-05-31
 1. Added Qantas (QF) to AmEx MR as they have a new partnership as of 05/2019.
