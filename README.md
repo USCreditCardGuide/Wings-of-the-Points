@@ -15,8 +15,15 @@ Live Demo -> [https://physixfan.github.io/Wings-of-the-Points/index.html](https:
 ## Note
 * Chase UR is short for Chase Ultimate Rewards points; AmEx MR is short for American Express Membership Rewards points; Citi TYP is short for Citi ThankYou Points.
 * The Marriott Bonvoy points can be transferred to airlines miles at 3:1 ratio with most programs. Plus, Marriott will add 5,000 miles for every 60,000 Marriott Bonvoy points you transfer to airline miles. Therefore we count the ratio as 3:1.25. It is basically equivalent to the previous SPG program (1:1.25 ratio).
+* Apart from Air France (AF), Flying Blue is also the frequent flyer program for KLM (KL), Kenya Airways (KQ), and TAROM (RO). These airlines are not shown in the chart due to limited space.
+* Apart from Lufthansa (LH), Miles & More is also the frequent flyer program for Adria Airways (JP), Austrian Airlines (OS), Brussels Airlines (SN), Croatia Airlines (OU), LOT Polish Airlines (LO), and SWISS (LX). These airlines are not shown in the chart due to limited space.
 
 ## Change Log
+
+### 2019-08-18
+
+1. Garuda Indonesia (GA) GarudaMiles is no longer a transfer partner of TYP.
+2. Delisted some airlines sharing the same frequent flyer programs (i.e. Flying Blue and Miles & More)
 
 ### 2019-06-07
 
