@@ -19,10 +19,12 @@ Live Demo -> [https://physixfan.github.io/Wings-of-the-Points/index.html](https:
 * Apart from Lufthansa (LH), Miles & More is also the frequent flyer program for Adria Airways (JP), Austrian Airlines (OS), Brussels Airlines (SN), Croatia Airlines (OU), LOT Polish Airlines (LO), and SWISS (LX). These airlines are not shown in the chart due to limited space.
 
 ## Change Log
+### 2019-08-25
+1. Emirates (EK) Skywards is now a transfer partner of Chase UR.
 
 ### 2019-08-18
 
-1. Garuda Indonesia (GA) GarudaMiles is no longer a transfer partner of TYP.
+1. Garuda Indonesia (GA) GarudaMiles is no longer a transfer partner of Citi TYP.
 2. Delisted some airlines sharing the same frequent flyer programs (i.e. Flying Blue and Miles & More)
 
 ### 2019-06-07
@@ -31,7 +33,7 @@ Live Demo -> [https://physixfan.github.io/Wings-of-the-Points/index.html](https:
 2. Added the corresponding names of the frequent flyer program to the airlines.
 
 ### 2019-05-31
-1. Added Qantas (QF) to AmEx MR as they have a new partnership as of 05/2019.
+1. Qantas (QF) is now a transfer partner of AmEx MR.
 
 ### 2019-05-25
 1. Forked from [Siriolabs](https://github.com/Siriolabs/Wings-of-the-Points) by physixfan and keep this repo up to date.
