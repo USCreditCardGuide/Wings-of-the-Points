@@ -19,6 +19,9 @@ Live Demo -> [https://physixfan.github.io/Wings-of-the-Points/index.html](https:
 * Apart from Lufthansa (LH), Miles & More is also the frequent flyer program for Adria Airways (JP), Austrian Airlines (OS), Brussels Airlines (SN), Croatia Airlines (OU), LOT Polish Airlines (LO), and SWISS (LX). These airlines are not shown in the chart due to limited space.
 
 ## Change Log
+### 2019-10-21
+1. AeroMexico (AM) Club Premier is now a transfer partner of Citi TYP. 
+
 ### 2019-08-25
 1. Emirates (EK) Skywards is now a transfer partner of Chase UR.
 
