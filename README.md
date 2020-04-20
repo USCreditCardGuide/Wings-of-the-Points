@@ -19,42 +19,45 @@ Live Demo -> [https://physixfan.github.io/Wings-of-the-Points/index.html](https:
 * Apart from Lufthansa (LH), Miles & More is also the frequent flyer program for Adria Airways (JP), Austrian Airlines (OS), Brussels Airlines (SN), Croatia Airlines (OU), LOT Polish Airlines (LO), and SWISS (LX). These airlines are not shown in the chart due to limited space.
 
 ## Change Log
+### 2020-04-19
+* Emirates (EK) Skywards is now a transfer partner of Citi TYP.
+
 ### 2019-10-21
-1. AeroMexico (AM) Club Premier is now a transfer partner of Citi TYP. 
+* AeroMexico (AM) Club Premier is now a transfer partner of Citi TYP. 
 
 ### 2019-08-25
-1. Emirates (EK) Skywards is now a transfer partner of Chase UR.
+* Emirates (EK) Skywards is now a transfer partner of Chase UR.
 
 ### 2019-08-18
 
-1. Garuda Indonesia (GA) GarudaMiles is no longer a transfer partner of Citi TYP.
-2. Delisted some airlines sharing the same frequent flyer programs (i.e. Flying Blue and Miles & More)
+* Garuda Indonesia (GA) GarudaMiles is no longer a transfer partner of Citi TYP.
+* Delisted some airlines sharing the same frequent flyer programs (i.e. Flying Blue and Miles & More)
 
 ### 2019-06-07
 
-1. Lufthansa (LH) Miles and More program is no longer a transfer partner of Marriott Bonvoy as of 06/2019.
-2. Added the corresponding names of the frequent flyer program to the airlines.
+* Lufthansa (LH) Miles and More program is no longer a transfer partner of Marriott Bonvoy as of 06/2019.
+* Added the corresponding names of the frequent flyer program to the airlines.
 
 ### 2019-05-31
-1. Qantas (QF) is now a transfer partner of AmEx MR.
+* Qantas (QF) is now a transfer partner of AmEx MR.
 
 ### 2019-05-25
-1. Forked from [Siriolabs](https://github.com/Siriolabs/Wings-of-the-Points) by physixfan and keep this repo up to date.
-2. Added C1 - Capital One Miles transfer partners.
-3. Added Aer Lingus (EI) to AmEx MR as they have a new partnership as of 06/2018.
-4. Added Avianca (AV) to AmEx MR as they have a new partnership as of 11/2018.
-5. Moved CZ from SkyTeam to non-Alliance as it left SkyTeam as of 01/2019.
+* Forked from [Siriolabs](https://github.com/Siriolabs/Wings-of-the-Points) by physixfan and keep this repo up to date.
+* Added C1 - Capital One Miles transfer partners.
+* Added Aer Lingus (EI) to AmEx MR as they have a new partnership as of 06/2018.
+* Added Avianca (AV) to AmEx MR as they have a new partnership as of 11/2018.
+* Moved CZ from SkyTeam to non-Alliance as it left SkyTeam as of 01/2019.
 
 ### 2018-09-04
-1. Dealt with the Marriott/SPG merger mess.
-2. Added Avianca (AV) to Citi TYP as they have a new partnership as of 11/2017.
-3. Removed Korean Air (KE) from Chase UR as transfer agreements have ended as of 08/2018.
-4. Added JetBlue (B6) to Chase UR as they have a new partnership as of 08/2018.
+* Dealt with the Marriott/SPG merger mess.
+* Added Avianca (AV) to Citi TYP as they have a new partnership as of 11/2017.
+* Removed Korean Air (KE) from Chase UR as transfer agreements have ended as of 08/2018.
+* Added JetBlue (B6) to Chase UR as they have a new partnership as of 08/2018.
 
 ### 2018-02-14
-1. Removed Virgin America (VX) as it is acquired by Alaska (AS).
-2. Add Cathay Dragon (KA) to Amex, Citi, Marriott, SPG as they share Asia Miles with CX.
-3. Add Aer Lingus (EI) and Iberia (IB) to Chase as these can be transferred directly as of 11/2017.
+* Removed Virgin America (VX) as it is acquired by Alaska (AS).
+* Add Cathay Dragon (KA) to Amex, Citi, Marriott, SPG as they share Asia Miles with CX.
+* Add Aer Lingus (EI) and Iberia (IB) to Chase as these can be transferred directly as of 11/2017.
 
 
 ## Contributors
