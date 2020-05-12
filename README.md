@@ -19,6 +19,9 @@ Live Demo -> [https://physixfan.github.io/Wings-of-the-Points/index.html](https:
 * Apart from Lufthansa (LH), Miles & More is also the frequent flyer program for Adria Airways (JP), Austrian Airlines (OS), Brussels Airlines (SN), Croatia Airlines (OU), LOT Polish Airlines (LO), and SWISS (LX). These airlines are not shown in the chart due to limited space.
 
 ## Change Log
+### 2020-05-12
+* Capital One lost transfer partners Qatar Airways (QR) and Hainan Airways (HU)
+
 ### 2020-04-19
 * Emirates (EK) Skywards is now a transfer partner of Citi TYP.
 
