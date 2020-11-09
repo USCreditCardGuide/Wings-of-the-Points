@@ -2,7 +2,7 @@
 
 This is a chart to visually represent the transfer partnerships between rewards programs of US credit cards and airlines.
 
-Live Demo -> [https://physixfan.github.io/Wings-of-the-Points/index.html](https://physixfan.github.io/Wings-of-the-Points/index.html)
+Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html](https://uscreditcardguide.github.io/Wings-of-the-Points/index.html)
 
 
 ## Usage
