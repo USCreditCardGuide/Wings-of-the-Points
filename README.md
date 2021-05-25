@@ -20,6 +20,9 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 
 ## Change Log
 
+### 2021-05-25
+* El Al (LY) Matmid is no longer a transfer partner of MR points.
+
 ### 2021-04-19
 * Capital One added the following transfer partners: BA, TP, TK. It also improved transfer ratio for several partners. Removed MU from MB transfer partners. AS joined Oneworld. LATAM left Oneworld.
 
