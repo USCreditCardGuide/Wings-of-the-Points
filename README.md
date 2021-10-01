@@ -20,6 +20,10 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 
 ## Change Log
 
+### 2021-09-30
+* Added Brex Miles transfer partners.
+* Added Bilt Miles transfer partners.
+
 ### 2021-08-03
 * Air Canada (AC) Aeroplan is now a transfer partner of Chase UR.
 
