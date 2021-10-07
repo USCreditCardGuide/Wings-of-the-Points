@@ -20,6 +20,9 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 
 ## Change Log
 
+### 2021-10-07
+* Capital One Miles made most transfer ratios to be 1:1 now.
+
 ### 2021-08-03
 * Air Canada (AC) Aeroplan is now a transfer partner of Chase UR.
 
