@@ -20,6 +20,10 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 
 ## Change Log
 
+### 2022-11-01
+* Marriott Bonvoy transfer ratio reduced from 3:1.25 to 3:1 for the following partners: AA, AV, DL.
+* Marriott Bonvoy lost partner CZ.
+
 ### 2021-10-07
 * Capital One Miles made most transfer ratios to be 1:1 now.
 
