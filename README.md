@@ -20,6 +20,13 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 
 ## Change Log
 
+### 2025-05-12
+
+* Bilt Rewards is added to this chart
+* B6 is now a transfer partner of C1 points at ratio 1:0.6.
+* Marriott -> UA ratio is increased to 3:1.5. (If you’re a United MileagePlus® member, you’ll get 10,000 bonus miles for every 60,000 points you transfer.)
+* KE is no longer a transfer partner for Marriott.
+
 ### 2023-07-28
 * QR is now a transfer partner of AmEx MR at ratio 1:1.
 
