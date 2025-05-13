@@ -20,6 +20,10 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 
 ## Change Log
 
+### 2025-05-13
+
+* JL is now a transfer partner of Bilt points at ratio 1:1.
+
 ### 2025-05-12
 
 * Bilt Rewards is added to this chart
