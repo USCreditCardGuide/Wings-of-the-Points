@@ -20,6 +20,10 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 
 ## Change Log
 
+### 2025-07-27
+
+* AA is now a transfer partner of Citi TYP at ratio 1:1.
+
 ### 2025-05-22
 
 * QR is now a transfer partner of Bilt points at ratio 1:1.
