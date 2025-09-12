@@ -20,6 +20,10 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 
 ## Change Log
 
+### 2025-09-12
+
+* OZ is not a transfer partner of Marriott any more.
+
 ### 2025-07-27
 
 * AA is now a transfer partner of Citi TYP at ratio 1:1.
