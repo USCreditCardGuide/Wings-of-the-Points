@@ -22,7 +22,7 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 
 ### 2025-09-23
 
-* JL is now a transfer partner of C1 at ratio 1:0.75.
+* JL is now a transfer partner of C1 at ratio 1:0.75. QR is now a transfer partner of C1 at ratio 1:1.
 
 ### 2025-09-12
 
