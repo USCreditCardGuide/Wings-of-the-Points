@@ -20,6 +20,10 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 
 ## Change Log
 
+### 2025-10-08
+
+* EY is now a transfer partner of Bilt at ratio 1:1.
+
 ### 2025-09-23
 
 * JL is now a transfer partner of C1 at ratio 1:0.75. QR is now a transfer partner of C1 at ratio 1:1.
