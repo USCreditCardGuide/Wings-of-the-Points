@@ -20,6 +20,10 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 
 ## Change Log
 
+### 2026-03-01
+
+* The transfer ratio for MR to CX is lowered to 1:0.8 (from 1:1).
+
 ### 2025-10-08
 
 * EY is now a transfer partner of Bilt at ratio 1:1.
