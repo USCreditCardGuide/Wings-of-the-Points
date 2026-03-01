@@ -24,6 +24,10 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 
 * The transfer ratio for MR to CX is lowered to 1:0.8 (from 1:1).
 
+### 2026-01-25
+
+* AeroMexico (AM) is no longer a transfer partner of Citi TYP.
+
 ### 2025-10-08
 
 * EY is now a transfer partner of Bilt at ratio 1:1.
