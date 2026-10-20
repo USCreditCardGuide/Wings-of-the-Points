@@ -20,6 +20,10 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 
 ## Change Log
 
+### 2026-10-20
+
+* B6 is now a transfer partner of Bilt at ratio 1:1.
+
 ### 2026-09-20
 
 * JL is now a transfer partner of TYP at ratio 1:1.
