@@ -36,6 +36,7 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 * Added Vueling Club (VY) as a transfer partner of Marriott at 3:1.25.
 * Moved Scandinavian Airlines (SK) from Star Alliance to SkyTeam.
 * Removed Czech Airlines (OK), whose OK Plus program has ended.
+* Updated the loyalty program names for BA, IB, AM, AI, and NZ.
 
 ### 2026-10-20
 
