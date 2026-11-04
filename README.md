@@ -24,6 +24,8 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 
 * CM is now a transfer partner of C1 at ratio 1:0.7.
 * CM is now a transfer partner of Citi at ratio 1:1.
+(and the following old changes)
+* UR can no longer transfer to EK; MR/TYP to EK ratio is lowered from 1:1 to 1:0.8.
 
 ### 2026-10-20
 
