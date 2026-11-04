@@ -20,6 +20,11 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 
 ## Change Log
 
+### 2026-11.04
+
+* CM is now a transfer partner of C1 at ratio 1:0.7.
+* CM is now a transfer partner of Citi at ratio 1:1.
+
 ### 2026-10-20
 
 * B6 is now a transfer partner of Bilt at ratio 1:1.
