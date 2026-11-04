@@ -51,6 +51,9 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 * Updated the loyalty program names for BA, IB, AM, AI, and NZ.
 * Clarified Marriott transfer bonuses, Citi card eligibility, and shared frequent flyer programs in the README.
 * Added Royal Air Maroc (AT) and Oman Air (WY) to oneworld as N/A.
+* Added Kenya Airways (KQ, Asante Rewards) to SkyTeam as N/A and consolidated Shenzhen Airlines (ZH) under Air China (CA, PhoenixMiles).
+* Corrected JetBlue's alphabetical position and removed transfer-ratio tooltips from N/A links.
+* Replaced RawGit dependencies with a local copy of d3.chart; the Sankey implementation is already bundled locally.
 
 ### 2026-10-20
 

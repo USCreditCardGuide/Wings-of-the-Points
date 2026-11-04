@@ -4,9 +4,7 @@
   <meta charset="utf-8">
   <title>Wings of the Points</title>
   <script src="https://d3js.org/d3.v3.min.js"></script>
-  <script src="https://cdn.rawgit.com/newrelic-forks/d3-plugins-sankey/master/sankey.js"></script>
-  <script src="https://cdn.rawgit.com/misoproject/d3.chart/master/d3.chart.min.js"></script>
-  <!--<script src="https://cdn.rawgit.com/q-m/d3.chart.sankey/master/d3.chart.sankey.min.js"></script>-->
+  <script src="vendor/d3.chart-0.3.0.min.js"></script>
   <script src="d3.chart.sankey.min.modified.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/components/label.css" />
@@ -108,8 +106,8 @@
         { color: '#1565C0', sc: 'ey', name: 'Etihad (Etihad Guest)', },
         { color: '#1565C0', sc: 'f9', name: 'Frontier (Frontier Miles)', },
         { color: '#1565C0', sc: 'hu', name: 'Hainan Airlines (Fortune Wings Club)', },
-        { color: '#1565C0', sc: 'la', name: 'LATAM (LATAM Pass)', },
         { color: '#1565C0', sc: 'b6', name: 'JetBlue (TrueBlue)', },
+        { color: '#1565C0', sc: 'la', name: 'LATAM (LATAM Pass)', },
         { color: '#1565C0', sc: 'wn', name: 'Southwest (Rapid Rewards)', },
         { color: '#1565C0', sc: 'va', name: 'Virgin Australia (Velocity)', },
         { color: '#1565C0', sc: 'vy', name: 'Vueling (Vueling Club/Avios)', },
@@ -147,7 +145,7 @@
         { color: '#D84315', sc: 'mu', name: 'China Eastern Airlines (Eastern Miles)', },
         { color: '#D84315', sc: 'dl', name: 'Delta Air Lines (SkyMiles)', },
         { color: '#D84315', sc: 'ga', name: 'Garuda Indonesia (GarudaMiles)', },
-        //{ color: '#D84315', sc: 'kq', name: 'Kenya Airways (Flying Blue)', },
+        { color: '#D84315', sc: 'kq', name: 'Kenya Airways (Asante Rewards)', },
         //{ color: '#D84315', sc: 'kl', name: 'KLM (Flying Blue)', },
         { color: '#D84315', sc: 'ke', name: 'Korean Air (SKYPASS)', },
         { color: '#D84315', sc: 'me', name: 'Middle East Airlines (Cedar Miles)', },
@@ -180,7 +178,6 @@
         { color: '#FFD600', sc: 'br', name: 'EVA Air (Infinity MileageLands)', },
         //{ color: '#FFD600', sc: 'lo', name: 'LOT Polish Airlines (Miles & More)', },
         { color: '#FFD600', sc: 'lh', name: 'Lufthansa (Miles & More)', },
-        { color: '#FFD600', sc: 'zh', name: 'Shenzhen Airlines (PhoenixMiles)', },
         { color: '#FFD600', sc: 'sq', name: 'Singapore Airlines (KrisFlyer)', },
         { color: '#FFD600', sc: 'sa', name: 'South African Airways (Voyager)', },
         //{ color: '#FFD600', sc: 'lx', name: 'SWISS (Miles & More)', },
@@ -224,8 +221,8 @@
       [{ s: 'amex', t: 'ey', f: 0 }, { s: 'citi', t: 'ey', f: 1 }, { s: 'chase', t: 'ey', f: 0 }, { s: 'c1', t: 'ey', f: 1 }, { s: 'bilt', t: 'ey', f: 1 }, { s: 'marriott', t: 'ey', f: 1 }],
       [{ s: 'amex', t: 'f9', f: 0 }, { s: 'citi', t: 'f9', f: 0 }, { s: 'chase', t: 'f9', f: 0 }, { s: 'c1', t: 'f9', f: 0 }, { s: 'bilt', t: 'f9', f: 0 }, { s: 'marriott', t: 'f9', f: 1 }],
       [{ s: 'amex', t: 'hu', f: 0 }, { s: 'citi', t: 'hu', f: 0 }, { s: 'chase', t: 'hu', f: 0 }, { s: 'c1', t: 'hu', f: 0 }, { s: 'bilt', t: 'hu', f: 0 }, { s: 'marriott', t: 'hu', f: 1 }],
-      [{ s: 'amex', t: 'la', f: 0 }, { s: 'citi', t: 'la', f: 0 }, { s: 'chase', t: 'la', f: 0 }, { s: 'c1', t: 'la', f: 0 }, { s: 'bilt', t: 'la', f: 0 }, { s: 'marriott', t: 'la', f: 1 }],
       [{ s: 'amex', t: 'b6', f: 1 }, { s: 'citi', t: 'b6', f: 1 }, { s: 'chase', t: 'b6', f: 1 }, { s: 'c1', t: 'b6', f: 1 }, { s: 'bilt', t: 'b6', f: 1 }, { s: 'marriott', t: 'b6', f: 0 }],
+      [{ s: 'amex', t: 'la', f: 0 }, { s: 'citi', t: 'la', f: 0 }, { s: 'chase', t: 'la', f: 0 }, { s: 'c1', t: 'la', f: 0 }, { s: 'bilt', t: 'la', f: 0 }, { s: 'marriott', t: 'la', f: 1 }],
       [{ s: 'amex', t: 'wn', f: 0 }, { s: 'citi', t: 'wn', f: 0 }, { s: 'chase', t: 'wn', f: 1 }, { s: 'c1', t: 'wn', f: 0 }, { s: 'bilt', t: 'wn', f: 1 }, { s: 'marriott', t: 'wn', f: 1 }],
       [{ s: 'amex', t: 'va', f: 0 }, { s: 'citi', t: 'va', f: 0 }, { s: 'chase', t: 'va', f: 0 }, { s: 'c1', t: 'va', f: 0 }, { s: 'bilt', t: 'va', f: 0 }, { s: 'marriott', t: 'va', f: 1 }],
       [{ s: 'amex', t: 'vy', f: 0 }, { s: 'citi', t: 'vy', f: 0 }, { s: 'chase', t: 'vy', f: 0 }, { s: 'c1', t: 'vy', f: 0 }, { s: 'bilt', t: 'vy', f: 0 }, { s: 'marriott', t: 'vy', f: 1 }],
@@ -261,7 +258,7 @@
       [{ s: 'amex', t: 'mu', f: 0 }, { s: 'citi', t: 'mu', f: 0 }, { s: 'chase', t: 'mu', f: 0 }, { s: 'c1', t: 'mu', f: 0 }, { s: 'bilt', t: 'mu', f: 0 }, { s: 'marriott', t: 'mu', f: 0 }],
       [{ s: 'amex', t: 'dl', f: 1 }, { s: 'citi', t: 'dl', f: 0 }, { s: 'chase', t: 'dl', f: 0 }, { s: 'c1', t: 'dl', f: 0 }, { s: 'bilt', t: 'dl', f: 0 }, { s: 'marriott', t: 'dl', f: 1 }],
       [{ s: 'amex', t: 'ga', f: 0 }, { s: 'citi', t: 'ga', f: 0 }, { s: 'chase', t: 'ga', f: 0 }, { s: 'c1', t: 'ga', f: 0 }, { s: 'bilt', t: 'ga', f: 0 }, { s: 'marriott', t: 'ga', f: 0 }],
-      //[{ s: 'amex', t: 'kq', f: 1 }, { s: 'citi', t: 'kq', f: 1 }, { s: 'chase', t: 'kq', f: 1 }, { s: 'c1', t: 'kq', f: 1 }, { s: 'marriott', t: 'kq', f: 1 }],
+      [{ s: 'amex', t: 'kq', f: 0 }, { s: 'citi', t: 'kq', f: 0 }, { s: 'chase', t: 'kq', f: 0 }, { s: 'c1', t: 'kq', f: 0 }, { s: 'bilt', t: 'kq', f: 0 }, { s: 'marriott', t: 'kq', f: 0 }],
       //[{ s: 'amex', t: 'kl', f: 1 }, { s: 'citi', t: 'kl', f: 1 }, { s: 'chase', t: 'kl', f: 1 }, { s: 'c1', t: 'kl', f: 1 }, { s: 'marriott', t: 'kl', f: 1 }],
       [{ s: 'amex', t: 'ke', f: 0 }, { s: 'citi', t: 'ke', f: 0 }, { s: 'chase', t: 'ke', f: 0 }, { s: 'c1', t: 'ke', f: 0 }, { s: 'bilt', t: 'ke', f: 0 }, { s: 'marriott', t: 'ke', f: 0 }],
       [{ s: 'amex', t: 'me', f: 0 }, { s: 'citi', t: 'me', f: 0 }, { s: 'chase', t: 'me', f: 0 }, { s: 'c1', t: 'me', f: 0 }, { s: 'bilt', t: 'me', f: 0 }, { s: 'marriott', t: 'me', f: 0 }],
@@ -293,7 +290,6 @@
       [{ s: 'amex', t: 'br', f: 0 }, { s: 'citi', t: 'br', f: 1 }, { s: 'chase', t: 'br', f: 0 }, { s: 'c1', t: 'br', f: 1 }, { s: 'bilt', t: 'br', f: 0 }, { s: 'marriott', t: 'br', f: 0 }],
       //[{ s: 'amex', t: 'lo', f: 0 }, { s: 'citi', t: 'lo', f: 0 }, { s: 'chase', t: 'lo', f: 0 }, { s: 'c1', t: 'lo', f: 0 }, { s: 'marriott', t: 'lo', f: 0 }],
       [{ s: 'amex', t: 'lh', f: 0 }, { s: 'citi', t: 'lh', f: 0 }, { s: 'chase', t: 'lh', f: 0 }, { s: 'c1', t: 'lh', f: 0 }, { s: 'bilt', t: 'lh', f: 0 }, { s: 'marriott', t: 'lh', f: 0 }],
-      [{ s: 'amex', t: 'zh', f: 0 }, { s: 'citi', t: 'zh', f: 0 }, { s: 'chase', t: 'zh', f: 0 }, { s: 'c1', t: 'zh', f: 0 }, { s: 'bilt', t: 'zh', f: 0 }, { s: 'marriott', t: 'zh', f: 1 }],
       [{ s: 'amex', t: 'sq', f: 1 }, { s: 'citi', t: 'sq', f: 1 }, { s: 'chase', t: 'sq', f: 1 }, { s: 'c1', t: 'sq', f: 1 }, { s: 'bilt', t: 'sq', f: 0 }, { s: 'marriott', t: 'sq', f: 1 }],
       [{ s: 'amex', t: 'sa', f: 0 }, { s: 'citi', t: 'sa', f: 0 }, { s: 'chase', t: 'sa', f: 0 }, { s: 'c1', t: 'sa', f: 0 }, { s: 'bilt', t: 'sa', f: 0 }, { s: 'marriott', t: 'sa', f: 0 }],
       //[{ s: 'amex', t: 'lx', f: 0 }, { s: 'citi', t: 'lx', f: 0 }, { s: 'chase', t: 'lx', f: 0 }, { s: 'c1', t: 'lx', f: 0 }, { s: 'marriott', t: 'lx', f: 0 }],
@@ -372,7 +368,6 @@
       'sq': "1:1",
       'ua': "1:1",
       'af': "1:1",
-      //'kq': "1:1",
       //'kl': "1:1",
       //'ro': "1:1",
       'b6': "1:1",
@@ -394,7 +389,6 @@
       'qf': "1:1",
       'am': "1:1.6",
       'af': "1:1",
-      //'kq': "1:1",
       //'kl': "1:1",
       //'ro': "1:1",
       'dl': "1:1",
@@ -407,7 +401,6 @@
       'ey': "1:1",
       'br': "1:1",
       'af': "1:1",
-      //'kq': "1:1",
       //'kl': "1:1",
       //'ro': "1:1",
       'vs': "1:1",
@@ -427,7 +420,6 @@
       'am': "1:1",
       'ac': "1:1",
       'af': "1:1",
-      //'kq': "2:1.5",
       //'kl': "2:1.5",
       //'ro': "2:1.5",
       'av': "1:1",
@@ -473,9 +465,7 @@
       'am': "3:1.25",
       'ac': "3:1.25",
       'ca': "3:1.25",
-      'zh': "3:1.25",
       'af': "3:1.25",
-      //'kq': "3:1.25",
       //'kl': "3:1.25",
       //'ro': "3:1.25",
       'nz': "200:1.25",
@@ -546,10 +536,15 @@
     target = link.target,
     source = link.source;
 
+    if (source.sc === "none" || target.sc === "none") {
+      $box.hide();
+      return;
+    }
+
     if (source.sc === "chase" || source.sc === "amex" ||  source.sc === "citi" || source.sc === "c1" || source.sc === "bilt" || source.sc === "marriott" || source.sc === "none") {
       [target, source] = [source, target];
     }
-    rate = rates[target.sc] ? (rates[target.sc][source.sc] || "?:?") : "?:?";
+    var rate = rates[target.sc] ? (rates[target.sc][source.sc] || "?:?") : "?:?";
 
     $box.show()
     .html(`${target.name} <strong>${rate}</strong> ${source.name}`);
