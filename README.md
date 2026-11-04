@@ -27,6 +27,7 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 
 * Apart from Air France (AF), Flying Blue is also the frequent flyer program for KLM (KL) and TAROM (RO). These airlines are represented by the Air France node to save space.
 * Apart from Lufthansa (LH), Miles & More is also the frequent flyer program for Austrian Airlines (OS), Brussels Airlines (SN), Croatia Airlines (OU), ITA Airways (AZ), LOT Polish Airlines (LO), and SWISS (LX). These airlines are represented by the Lufthansa node to save space.
+* [Fiji Airways (FJ)](https://www.oneworld.com/members/fiji-airways) shares AAdvantage with American Airlines (AA) and is represented by the American Airlines node to save space.
 
 
 ## Change Log
@@ -49,6 +50,7 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 * Removed Czech Airlines (OK), whose OK Plus program has ended.
 * Updated the loyalty program names for BA, IB, AM, AI, and NZ.
 * Clarified Marriott transfer bonuses, Citi card eligibility, and shared frequent flyer programs in the README.
+* Added Royal Air Maroc (AT) and Oman Air (WY) to oneworld as N/A. Fiji Airways (FJ) is represented by the American Airlines (AA) node because they share AAdvantage.
 
 ### 2026-10-20
 
