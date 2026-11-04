@@ -13,10 +13,21 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 * You can use ctrl+F (or cmd+F) to quickly find an airline.
 
 ## Note
-* Chase UR is short for Chase Ultimate Rewards points; AmEx MR is short for American Express Membership Rewards points; Citi TYP is short for Citi ThankYou Points.
-* The Marriott Bonvoy points can be transferred to airlines miles at 3:1 ratio with most programs. Plus, Marriott will add 5,000 miles for every 60,000 Marriott Bonvoy points you transfer to airline miles. Therefore we count the ratio as 3:1.25. It is basically equivalent to the previous SPG program (1:1.25 ratio).
-* Apart from Air France (AF), Flying Blue is also the frequent flyer program for KLM (KL), Kenya Airways (KQ), and TAROM (RO). These airlines are not shown in the chart due to limited space.
-* Apart from Lufthansa (LH), Miles & More is also the frequent flyer program for Adria Airways (JP), Austrian Airlines (OS), Brussels Airlines (SN), Croatia Airlines (OU), LOT Polish Airlines (LO), and SWISS (LX). These airlines are not shown in the chart due to limited space.
+
+* Chase UR is short for Chase Ultimate Rewards points; AmEx MR is short for American Express Membership Rewards points; Citi TYP is short for Citi ThankYou Points; C1 is short for Capital One Rewards.
+* Citi TYP ratios shown assume an eligible premium ThankYou card, such as Citi Strata Elite, Citi Strata Premier, or Citi Prestige. Ratios vary by card: for example, transfers to Copa ConnectMiles (CM) and Japan Airlines Mileage Bank (JL) are 1:1 with qualifying premium cards, but 1:0.7 with cards such as Citi Double Cash, Citi Custom Cash, and Citi Strata. Use the ratio available for your card when calculating a transfer.
+* Marriott Bonvoy transfers to most airline programs at a base ratio of 3:1. The chart includes the standard bonus for transfers in multiples of 60,000 Bonvoy points; its effective ratios do not apply to every transfer amount. Each complete block of 60,000 points earns the bonus shown below; any remainder converts at the base ratio. See the [Marriott transfer rules](https://www.marriott.com/loyalty/redeem/travel/points-to-miles.mi) and [United partnership details](https://travel-partner.marriott.com/united/en-us).
+
+| Marriott Bonvoy transfer destination | Base ratio | Bonus per 60,000 Bonvoy points | Total received for 60,000 points | Ratio shown in chart |
+| --- | --- | --- | --- | --- |
+| Most airline partners | 3:1 | 5,000 miles | 25,000 miles | 3:1.25 |
+| American AAdvantage (AA), Avianca LifeMiles (AV), Delta SkyMiles (DL) | 3:1 | None | 20,000 miles | 3:1 |
+| United MileagePlus (UA) | 3:1 | 10,000 miles | 30,000 miles | 3:1.5 |
+| Air New Zealand Koru (NZ) | 200:1 | 75 Airpoints | 375 Airpoints | 200:1.25 |
+
+* Apart from Air France (AF), Flying Blue is also the frequent flyer program for KLM (KL) and TAROM (RO). These airlines are represented by the Air France node to save space.
+* Apart from Lufthansa (LH), Miles & More is also the frequent flyer program for Austrian Airlines (OS), Brussels Airlines (SN), Croatia Airlines (OU), ITA Airways (AZ), LOT Polish Airlines (LO), and SWISS (LX). These airlines are represented by the Lufthansa node to save space.
+
 
 ## Change Log
 
@@ -37,6 +48,7 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 * Moved Scandinavian Airlines (SK) from Star Alliance to SkyTeam.
 * Removed Czech Airlines (OK), whose OK Plus program has ended.
 * Updated the loyalty program names for BA, IB, AM, AI, and NZ.
+* Clarified Marriott transfer bonuses, Citi card eligibility, and shared frequent flyer programs in the README.
 
 ### 2026-10-20
 
