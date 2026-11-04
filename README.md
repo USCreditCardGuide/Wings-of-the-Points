@@ -22,9 +22,10 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 
 ### 2026-11.04
 
-* CM is now a transfer partner of C1 at ratio 1:0.7.
+* CM is now a transfer partner of C1 at ratio 1:0.75.
 * CM is now a transfer partner of Citi at ratio 1:1.
 (and the following old changes)
+* Combined Alaska Mileage Plan and HawaiianMiles into Atmos Rewards under Alaska / Hawaiian Airlines.
 * EK is no longer a transfer partner of UR; MR/TYP to EK ratio is lowered from 1:1 to 1:0.8; C1 to EK ratio is lowered from 1:1 to 1:0.75.
 * EY is no longer a transfer partner of MR.
 * VS is now a transfer partner of C1 at ratio 1:1.
@@ -32,6 +33,9 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 * ET is now a transfer partner of Marriott at 3:1.25.
 * SU is no longer a transfer partner of Marriott.
 * SA is no longer a transfer partner of Marriott.
+* Added Vueling Club (VY) as a transfer partner of Marriott at 3:1.25.
+* Moved Scandinavian Airlines (SK) from Star Alliance to SkyTeam.
+* Removed Czech Airlines (OK), whose OK Plus program has ended.
 
 ### 2026-10-20
 
