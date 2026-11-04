@@ -28,6 +28,10 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 * EK is no longer a transfer partner of UR; MR/TYP to EK ratio is lowered from 1:1 to 1:0.8; C1 to EK ratio is lowered from 1:1 to 1:0.75.
 * EY is no longer a transfer partner of MR.
 * VS is now a transfer partner of C1 at ratio 1:1.
+* CZ is now a transfer partner of Marriott at 3:1.25.
+* ET is now a transfer partner of Marriott at 3:1.25.
+* SU is no longer a transfer partner of Marriott.
+* SA is no longer a transfer partner of Marriott.
 
 ### 2026-10-20
 
