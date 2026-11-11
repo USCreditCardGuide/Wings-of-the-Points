@@ -6,25 +6,23 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 
 
 ## Usage
-* It is better to view this chart on desktop. The screens on mobile devices are usually too narrow to have a good effect.
-* Move your mouse over the point name or airline name to highlight transfer relationships. 
-* Move your mouse over any line connecting a point and a mile to see the transfer ratio. 
-* The airlines are grouped by alliances, and inside an alliance the airlines are sorted by alphabetical order. 
-* You can use ctrl+F (or cmd+F) to quickly find an airline.
 
-## Note
+* Open **View transfer ratios** to jump to the tables by points program. The tables work on mobile and with JavaScript disabled.
+* Move your mouse over a point or airline name to highlight its transfer relationships.
+* Move your mouse over a line to see the transfer ratio and any card or bonus conditions.
+* Use Ctrl+F (or Cmd+F) to find an airline or its frequent flyer program.
+
+## Updating transfers
+
+Edit [`_data/transfers.csv`](_data/transfers.csv). Each airline has one row. Change the relevant program's cell to update a transfer, or leave it empty if the program does not transfer to that airline. Ratios are written as points sent to points or miles received. Put any card eligibility or block bonus in the same cell as the ratio.
+
+For a new airline, add a row with its code, program name, and alliance (`oneworld`, `skyteam`, `star`, or `none`). Logo images are optional. GitHub Pages reads the CSV when building `gh-pages` and uses it to generate both the chart data and the HTML tables.
+
+## Notes
 
 * Chase UR is short for Chase Ultimate Rewards points; AmEx MR is short for American Express Membership Rewards points; Citi TYP is short for Citi ThankYou Points; C1 is short for Capital One Rewards.
-* Citi TYP ratios shown assume an eligible premium ThankYou card, such as Citi Strata Elite, Citi Strata Premier, or Citi Prestige. Ratios vary by card: for example, transfers to Copa ConnectMiles (CM) and Japan Airlines Mileage Bank (JL) are 1:1 with qualifying premium cards, but 1:0.7 with cards such as Citi Double Cash, Citi Custom Cash, and Citi Strata. Use the ratio available for your card when calculating a transfer.
-* Marriott Bonvoy transfers to most airline programs at a base ratio of 3:1. The chart includes the standard bonus for transfers in multiples of 60,000 Bonvoy points; its effective ratios do not apply to every transfer amount. Each complete block of 60,000 points earns the bonus shown below; any remainder converts at the base ratio. See the [Marriott transfer rules](https://www.marriott.com/loyalty/redeem/travel/points-to-miles.mi) and [United partnership details](https://travel-partner.marriott.com/united/en-us).
-
-| Marriott Bonvoy transfer destination | Base ratio | Bonus per 60,000 Bonvoy points | Total received for 60,000 points | Ratio shown in chart |
-| --- | --- | --- | --- | --- |
-| Most airline partners | 3:1 | 5,000 miles | 25,000 miles | 3:1.25 |
-| American AAdvantage (AA), Avianca LifeMiles (AV), Delta SkyMiles (DL) | 3:1 | None | 20,000 miles | 3:1 |
-| United MileagePlus (UA) | 3:1 | 10,000 miles | 30,000 miles | 3:1.5 |
-| Air New Zealand Koru (NZ) | 200:1 | 75 Airpoints | 375 Airpoints | 200:1.25 |
-
+* Citi ratios depend on the card. Card conditions appear with the ratio for the route.
+* Marriott rows list the base ratio and any bonus for a complete block of points. Amounts below a complete block convert at the base ratio. See the [Marriott transfer rules](https://www.marriott.com/loyalty/redeem/travel/points-to-miles.mi) and [United partnership details](https://travel-partner.marriott.com/united/en-us).
 * Apart from Air France (AF), Flying Blue is also the frequent flyer program for KLM (KL) and TAROM (RO). These airlines are represented by the Air France node to save space.
 * Apart from Lufthansa (LH), Miles & More is also the frequent flyer program for Austrian Airlines (OS), Brussels Airlines (SN), Croatia Airlines (OU), ITA Airways (AZ), LOT Polish Airlines (LO), and SWISS (LX). These airlines are represented by the Lufthansa node to save space.
 * To save space, airlines sharing a frequent flyer program are generally grouped under a representative airline node, as with Flying Blue (Air France) and Miles & More (Lufthansa).

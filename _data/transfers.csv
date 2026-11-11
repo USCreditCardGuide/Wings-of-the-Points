@@ -1,0 +1,64 @@
+code,name,alliance,chase,amex,citi,c1,bilt,marriott
+EI,Aer Lingus (AerClub/Avios),none,1:1,1:1,,,1:1,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+CZ,China Southern Airlines (Sky Pearl Club),none,,,,,,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+LY,El Al (Matmid),none,,,,,,
+EK,Emirates (Skywards),none,,1:0.8,1:0.8 with eligible premium cards,1:0.75,1:1,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+EY,Etihad (Etihad Guest),none,,,1:1 with eligible premium cards,1:1,1:1,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+F9,Frontier (Frontier Miles),none,,,,,,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+HU,Hainan Airlines (Fortune Wings Club),none,,,,,,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+B6,JetBlue (TrueBlue),none,1:1,1:0.8,1:1 with eligible premium cards,1:0.6,1:1,
+LA,LATAM (LATAM Pass),none,,,,,,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+WN,Southwest (Rapid Rewards),none,1:1,,,,1:1,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+VA,Virgin Australia (Velocity),none,,,,,,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+VY,Vueling (Vueling Club/Avios),none,,,,,,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+AS,Alaska / Hawaiian Airlines (Atmos Rewards),oneworld,,,,,1:1,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+AA,American Airlines (AAdvantage),oneworld,,,1:1 with eligible premium cards,,,3:1
+BA,British Airways (The British Airways Club/Avios),oneworld,1:1,1:1,,1:1,1:1,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+CX,Cathay Pacific (Asia Miles),oneworld,,1:0.8,1:1 with eligible premium cards,1:1,1:1,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+AY,Finnair (Finnair Plus),oneworld,,,,1:1,,
+IB,Iberia (Iberia Club/Avios),oneworld,1:1,1:1,,,1:1,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+JL,Japan Airlines (JAL Mileage Bank),oneworld,,,"1:1 with eligible premium cards or 1:0.7 with eligible Citi Double Cash, Custom Cash, or Citi Strata cards",1:0.75,1:1,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+MH,Malaysia Airlines (Enrich),oneworld,,,,,,
+WY,Oman Air (Sindbad),oneworld,,,,,,
+QF,Qantas (Frequent Flyer),oneworld,,1:1,1:1 with eligible premium cards,1:1,,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+QR,Qatar Airways (Privilege Club/Avios),oneworld,,1:1,1:1 with eligible premium cards,1:1,1:1,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+AT,Royal Air Maroc (Safar Flyer),oneworld,,,,,,
+RJ,Royal Jordanian (Royal Club),oneworld,,,,,,
+S7,S7 Airlines (S7 Priority),oneworld,,,,,,
+UL,SriLankan Airlines (FlySmiLes),oneworld,,,,,,
+SU,Aeroflot (Aeroflot Bonus),skyteam,,,,,,
+AR,Aerolíneas Argentinas (Aerolíneas Plus),skyteam,,,,,,
+AM,Aeroméxico (Aeromexico Rewards),skyteam,,1:1.6,,1:1,,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+UX,Air Europa (Suma),skyteam,,,,,,
+AF,Air France (Flying Blue),skyteam,1:1,1:1,1:1 with eligible premium cards,1:1,1:1,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+CI,China Airlines (Dynasty Flyer),skyteam,,,,,,
+MU,China Eastern Airlines (Eastern Miles),skyteam,,,,,,
+DL,Delta Air Lines (SkyMiles),skyteam,,1:1,,,,3:1
+GA,Garuda Indonesia (GarudaMiles),skyteam,,,,,,
+KQ,Kenya Airways (Asante Rewards),skyteam,,,,,,
+KE,Korean Air (SKYPASS),skyteam,,,,,,
+ME,Middle East Airlines (Cedar Miles),skyteam,,,,,,
+SV,Saudia (Al Fursan Loyalty),skyteam,,,,,,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+SK,Scandinavian Airlines (EuroBonus),skyteam,,,,,,
+VN,Vietnam Airlines (LotusMiles),skyteam,,,,,,
+VS,Virgin Atlantic (Flying Club),skyteam,1:1,1:1,1:1 with eligible premium cards,1:1,1:1,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+MF,Xiamen Airlines (Egret Card),skyteam,,,,,,
+A3,Aegean Airlines (Miles+Bonus),star,,,,,,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+AC,Air Canada (Aeroplan),star,1:1,1:1,,1:1,1:1,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+CA,Air China (PhoenixMiles),star,,,,,,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+AI,Air India (Maharaja Club),star,,,,,,
+NZ,Air New Zealand (Koru/Airpoints),star,,,,,,"200:1 base + 75 Airpoints per 60,000 Bonvoy points"
+NH,All Nippon Airways (ANA Mileage Club),star,,1:1,,,,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+OZ,Asiana Airlines (Asiana Club),star,,,,,,
+AV,Avianca (LifeMiles),star,,1:1,1:1 with eligible premium cards,1:1,1:1,3:1
+CM,Copa Airlines (ConnectMiles),star,,,"1:1 with eligible premium cards or 1:0.7 with eligible Citi Double Cash, Custom Cash, or Citi Strata cards",1:0.75,,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+MS,EgyptAir (EgyptAir Plus),star,,,,,,
+ET,Ethiopian Airlines (ShebaMiles),star,,,,,,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+BR,EVA Air (Infinity MileageLands),star,,,1:1 with eligible premium cards,1:0.75,,
+LH,Lufthansa (Miles & More),star,,,,,,
+SQ,Singapore Airlines (KrisFlyer),star,1:1,1:1,1:1 with eligible premium cards,1:1,,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+SA,South African Airways (Voyager),star,,,,,,
+TP,TAP Portugal (TAP Miles&Go),star,,,,1:1,1:1,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+TG,Thai Airways (Royal Orchid Plus),star,,,1:1 with eligible premium cards,,,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+TK,Turkish Airlines (Miles&Smiles),star,,,1:1 with eligible premium cards,1:1,1:1,"3:1 base + 5,000 miles per 60,000 Bonvoy points"
+UA,United Airlines (MileagePlus),star,1:1,,,,1:1,"3:1 base + 10,000 miles per 60,000 Bonvoy points"
