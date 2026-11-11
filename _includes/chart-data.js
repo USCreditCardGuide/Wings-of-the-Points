@@ -18,7 +18,6 @@
   var airlines = allianceTypes.map(type => ({
     type,
     airlines: (rowsByAlliance[type] || []).map(row => ({
-      color: row.color,
       sc: row.code.toLowerCase(),
       name: row.name,
     })),

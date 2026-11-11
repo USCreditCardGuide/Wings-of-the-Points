@@ -80,14 +80,6 @@
     </div>
   </div>
   <script>
-  var colors = {
-    'environment':         '#edbd00',
-    'social':              '#367d85',
-    'animals':             '#97ba4c',
-    'health':              '#f5662b',
-    'research_ingredient': '#3f3e47',
-    'fallback':            '#9f9fa3'
-  };
   var systems = [
     { sc: 'chase', name: 'Chase UR'},
     { sc: 'amex', name: 'AmEx MR'},
@@ -183,7 +175,6 @@
   // .name(label)
   .colorNodes(function(name, node) {
     if (_.find(flatAirlines, o => o.name === name)) {
-      // return _.find(flatAirlines, o => o.name === name).color;
       return null;
     }
     if (node.sc === 'chase') { return chaseColor; }

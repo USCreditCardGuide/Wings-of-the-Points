@@ -11,7 +11,7 @@ Transfer ratios → [HTML table](https://uscreditcardguide.github.io/Wings-of-th
 
 Edit [the transfer CSV](_data/transfers.csv). Find the airline by its code and change the ratio in the program column. A blank cell means that the route is unavailable. GitHub Pages builds the chart and the HTML table from this file.
 
-For a new airline, add a row using an existing alliance value and color. The optional link_order field controls the order of the connections within an alliance. The row order controls the order of the airline nodes.
+For a new airline, add a row using an existing alliance value. The optional link_order field controls the order of the connections within an alliance. The row order controls the order of the airline nodes.
 
 
 ## Usage

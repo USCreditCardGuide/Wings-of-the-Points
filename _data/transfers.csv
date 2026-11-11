@@ -1,64 +1,64 @@
-code,name,alliance,color,link_order,amex,citi,chase,c1,bilt,marriott
-EI,Aer Lingus (AerClub/Avios),nonAliance,#1565C0,1,1:1,,1:1,,1:1,3:1.25
-CZ,China Southern Airlines (Sky Pearl Club),nonAliance,#D84315,2,,,,,,3:1.25
-LY,El Al (Matmid),nonAliance,#1565C0,4,,,,,,
-EK,Emirates (Skywards),nonAliance,#1565C0,3,1:0.8,1:0.8,,1:0.75,1:1,3:1.25
-EY,Etihad (Etihad Guest),nonAliance,#1565C0,5,,1:1,,1:1,1:1,3:1.25
-F9,Frontier (Frontier Miles),nonAliance,#1565C0,6,,,,,,3:1.25
-HU,Hainan Airlines (Fortune Wings Club),nonAliance,#1565C0,7,,,,,,3:1.25
-B6,JetBlue (TrueBlue),nonAliance,#1565C0,8,1:0.8,1:1,1:1,1:0.6,1:1,
-LA,LATAM (LATAM Pass),nonAliance,#1565C0,9,,,,,,3:1.25
-WN,Southwest (Rapid Rewards),nonAliance,#1565C0,10,,,1:1,,1:1,3:1.25
-VA,Virgin Australia (Velocity),nonAliance,#1565C0,11,,,,,,3:1.25
-VY,Vueling (Vueling Club/Avios),nonAliance,#1565C0,12,,,,,,3:1.25
-AS,Alaska / Hawaiian Airlines (Atmos Rewards),oneworld,#00695C,1,,,,,1:1,3:1.25
-AA,American Airlines (AAdvantage),oneworld,#00695C,2,,1:1,,,,3:1
-BA,British Airways (The British Airways Club/Avios),oneworld,#00695C,3,1:1,,1:1,1:1,1:1,3:1.25
-CX,Cathay Pacific (Asia Miles),oneworld,#00695C,5,1:0.8,1:1,,1:1,1:1,3:1.25
-AY,Finnair (Finnair Plus),oneworld,#00695C,6,,,,1:1,,
-IB,Iberia (Iberia Club/Avios),oneworld,#00695C,4,1:1,,1:1,,1:1,3:1.25
-JL,Japan Airlines (JAL Mileage Bank),oneworld,#00695C,7,,1:1,,1:0.75,1:1,3:1.25
-MH,Malaysia Airlines (Enrich),oneworld,#00695C,8,,,,,,
-WY,Oman Air (Sindbad),oneworld,#00695C,9,,,,,,
-QF,Qantas (Frequent Flyer),oneworld,#00695C,10,1:1,1:1,,1:1,,3:1.25
-QR,Qatar Airways (Privilege Club/Avios),oneworld,#00695C,11,1:1,1:1,,1:1,1:1,3:1.25
-AT,Royal Air Maroc (Safar Flyer),oneworld,#00695C,12,,,,,,
-RJ,Royal Jordanian (Royal Club),oneworld,#00695C,13,,,,,,
-S7,S7 Airlines (S7 Priority),oneworld,#00695C,14,,,,,,
-UL,SriLankan Airlines (FlySmiLes),oneworld,#00695C,15,,,,,,
-SU,Aeroflot (Aeroflot Bonus),skyteam,#D84315,1,,,,,,
-AR,Aerolíneas Argentinas (Aerolíneas Plus),skyteam,#D84315,2,,,,,,
-AM,Aeroméxico (Aeromexico Rewards),skyteam,#D84315,3,1:1.6,,,1:1,,3:1.25
-UX,Air Europa (Suma),skyteam,#D84315,4,,,,,,
-AF,Air France (Flying Blue),skyteam,#D84315,5,1:1,1:1,1:1,1:1,1:1,3:1.25
-CI,China Airlines (Dynasty Flyer),skyteam,#D84315,6,,,,,,
-MU,China Eastern Airlines (Eastern Miles),skyteam,#D84315,7,,,,,,
-DL,Delta Air Lines (SkyMiles),skyteam,#D84315,8,1:1,,,,,3:1
-GA,Garuda Indonesia (GarudaMiles),skyteam,#D84315,9,,,,,,
-KQ,Kenya Airways (Asante Rewards),skyteam,#D84315,10,,,,,,
-KE,Korean Air (SKYPASS),skyteam,#D84315,11,,,,,,
-ME,Middle East Airlines (Cedar Miles),skyteam,#D84315,12,,,,,,
-SV,Saudia (Al Fursan Loyalty),skyteam,#D84315,13,,,,,,3:1.25
-SK,Scandinavian Airlines (EuroBonus),skyteam,#D84315,14,,,,,,
-VN,Vietnam Airlines (LotusMiles),skyteam,#D84315,15,,,,,,
-VS,Virgin Atlantic (Flying Club),skyteam,#1565C0,16,1:1,1:1,1:1,1:1,1:1,3:1.25
-MF,Xiamen Airlines (Egret Card),skyteam,#D84315,17,,,,,,
-A3,Aegean Airlines (Miles+Bonus),starAlliance,#FFD600,1,,,,,,3:1.25
-AC,Air Canada (Aeroplan),starAlliance,#FFD600,2,1:1,,1:1,1:1,1:1,3:1.25
-CA,Air China (PhoenixMiles),starAlliance,#FFD600,3,,,,,,3:1.25
-AI,Air India (Maharaja Club),starAlliance,#FFD600,4,,,,,,
-NZ,Air New Zealand (Koru/Airpoints),starAlliance,#FFD600,5,,,,,,200:1.25
-NH,All Nippon Airways (ANA Mileage Club),starAlliance,#FFD600,6,1:1,,,,,3:1.25
-OZ,Asiana Airlines (Asiana Club),starAlliance,#FFD600,7,,,,,,
-AV,Avianca (LifeMiles),starAlliance,#FFD600,8,1:1,1:1,,1:1,1:1,3:1
-CM,Copa Airlines (ConnectMiles),starAlliance,#FFD600,9,,1:1,,1:0.75,,3:1.25
-MS,EgyptAir (EgyptAir Plus),starAlliance,#FFD600,10,,,,,,
-ET,Ethiopian Airlines (ShebaMiles),starAlliance,#FFD600,11,,,,,,3:1.25
-BR,EVA Air (Infinity MileageLands),starAlliance,#FFD600,12,,1:1,,1:0.75,,
-LH,Lufthansa (Miles & More),starAlliance,#FFD600,13,,,,,,
-SQ,Singapore Airlines (KrisFlyer),starAlliance,#FFD600,14,1:1,1:1,1:1,1:1,,3:1.25
-SA,South African Airways (Voyager),starAlliance,#FFD600,15,,,,,,
-TP,TAP Portugal (TAP Miles&Go),starAlliance,#FFD600,16,,,,1:1,1:1,3:1.25
-TG,Thai Airways (Royal Orchid Plus),starAlliance,#FFD600,17,,1:1,,,,3:1.25
-TK,Turkish Airlines (Miles&Smiles),starAlliance,#FFD600,18,,1:1,,1:1,1:1,3:1.25
-UA,United Airlines (MileagePlus),starAlliance,#FFD600,19,,,1:1,,1:1,3:1.5
+code,name,alliance,link_order,amex,citi,chase,c1,bilt,marriott
+EI,Aer Lingus (AerClub/Avios),nonAliance,1,1:1,,1:1,,1:1,3:1.25
+CZ,China Southern Airlines (Sky Pearl Club),nonAliance,2,,,,,,3:1.25
+LY,El Al (Matmid),nonAliance,4,,,,,,
+EK,Emirates (Skywards),nonAliance,3,1:0.8,1:0.8,,1:0.75,1:1,3:1.25
+EY,Etihad (Etihad Guest),nonAliance,5,,1:1,,1:1,1:1,3:1.25
+F9,Frontier (Frontier Miles),nonAliance,6,,,,,,3:1.25
+HU,Hainan Airlines (Fortune Wings Club),nonAliance,7,,,,,,3:1.25
+B6,JetBlue (TrueBlue),nonAliance,8,1:0.8,1:1,1:1,1:0.6,1:1,
+LA,LATAM (LATAM Pass),nonAliance,9,,,,,,3:1.25
+WN,Southwest (Rapid Rewards),nonAliance,10,,,1:1,,1:1,3:1.25
+VA,Virgin Australia (Velocity),nonAliance,11,,,,,,3:1.25
+VY,Vueling (Vueling Club/Avios),nonAliance,12,,,,,,3:1.25
+AS,Alaska / Hawaiian Airlines (Atmos Rewards),oneworld,1,,,,,1:1,3:1.25
+AA,American Airlines (AAdvantage),oneworld,2,,1:1,,,,3:1
+BA,British Airways (The British Airways Club/Avios),oneworld,3,1:1,,1:1,1:1,1:1,3:1.25
+CX,Cathay Pacific (Asia Miles),oneworld,5,1:0.8,1:1,,1:1,1:1,3:1.25
+AY,Finnair (Finnair Plus),oneworld,6,,,,1:1,,
+IB,Iberia (Iberia Club/Avios),oneworld,4,1:1,,1:1,,1:1,3:1.25
+JL,Japan Airlines (JAL Mileage Bank),oneworld,7,,1:1,,1:0.75,1:1,3:1.25
+MH,Malaysia Airlines (Enrich),oneworld,8,,,,,,
+WY,Oman Air (Sindbad),oneworld,9,,,,,,
+QF,Qantas (Frequent Flyer),oneworld,10,1:1,1:1,,1:1,,3:1.25
+QR,Qatar Airways (Privilege Club/Avios),oneworld,11,1:1,1:1,,1:1,1:1,3:1.25
+AT,Royal Air Maroc (Safar Flyer),oneworld,12,,,,,,
+RJ,Royal Jordanian (Royal Club),oneworld,13,,,,,,
+S7,S7 Airlines (S7 Priority),oneworld,14,,,,,,
+UL,SriLankan Airlines (FlySmiLes),oneworld,15,,,,,,
+SU,Aeroflot (Aeroflot Bonus),skyteam,1,,,,,,
+AR,Aerolíneas Argentinas (Aerolíneas Plus),skyteam,2,,,,,,
+AM,Aeroméxico (Aeromexico Rewards),skyteam,3,1:1.6,,,1:1,,3:1.25
+UX,Air Europa (Suma),skyteam,4,,,,,,
+AF,Air France (Flying Blue),skyteam,5,1:1,1:1,1:1,1:1,1:1,3:1.25
+CI,China Airlines (Dynasty Flyer),skyteam,6,,,,,,
+MU,China Eastern Airlines (Eastern Miles),skyteam,7,,,,,,
+DL,Delta Air Lines (SkyMiles),skyteam,8,1:1,,,,,3:1
+GA,Garuda Indonesia (GarudaMiles),skyteam,9,,,,,,
+KQ,Kenya Airways (Asante Rewards),skyteam,10,,,,,,
+KE,Korean Air (SKYPASS),skyteam,11,,,,,,
+ME,Middle East Airlines (Cedar Miles),skyteam,12,,,,,,
+SV,Saudia (Al Fursan Loyalty),skyteam,13,,,,,,3:1.25
+SK,Scandinavian Airlines (EuroBonus),skyteam,14,,,,,,
+VN,Vietnam Airlines (LotusMiles),skyteam,15,,,,,,
+VS,Virgin Atlantic (Flying Club),skyteam,16,1:1,1:1,1:1,1:1,1:1,3:1.25
+MF,Xiamen Airlines (Egret Card),skyteam,17,,,,,,
+A3,Aegean Airlines (Miles+Bonus),starAlliance,1,,,,,,3:1.25
+AC,Air Canada (Aeroplan),starAlliance,2,1:1,,1:1,1:1,1:1,3:1.25
+CA,Air China (PhoenixMiles),starAlliance,3,,,,,,3:1.25
+AI,Air India (Maharaja Club),starAlliance,4,,,,,,
+NZ,Air New Zealand (Koru/Airpoints),starAlliance,5,,,,,,200:1.25
+NH,All Nippon Airways (ANA Mileage Club),starAlliance,6,1:1,,,,,3:1.25
+OZ,Asiana Airlines (Asiana Club),starAlliance,7,,,,,,
+AV,Avianca (LifeMiles),starAlliance,8,1:1,1:1,,1:1,1:1,3:1
+CM,Copa Airlines (ConnectMiles),starAlliance,9,,1:1,,1:0.75,,3:1.25
+MS,EgyptAir (EgyptAir Plus),starAlliance,10,,,,,,
+ET,Ethiopian Airlines (ShebaMiles),starAlliance,11,,,,,,3:1.25
+BR,EVA Air (Infinity MileageLands),starAlliance,12,,1:1,,1:0.75,,
+LH,Lufthansa (Miles & More),starAlliance,13,,,,,,
+SQ,Singapore Airlines (KrisFlyer),starAlliance,14,1:1,1:1,1:1,1:1,,3:1.25
+SA,South African Airways (Voyager),starAlliance,15,,,,,,
+TP,TAP Portugal (TAP Miles&Go),starAlliance,16,,,,1:1,1:1,3:1.25
+TG,Thai Airways (Royal Orchid Plus),starAlliance,17,,1:1,,,,3:1.25
+TK,Turkish Airlines (Miles&Smiles),starAlliance,18,,1:1,,1:1,1:1,3:1.25
+UA,United Airlines (MileagePlus),starAlliance,19,,,1:1,,1:1,3:1.5
