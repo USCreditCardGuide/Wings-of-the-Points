@@ -5,6 +5,15 @@ This is a chart to visually represent the transfer partnerships between rewards 
 Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html](https://uscreditcardguide.github.io/Wings-of-the-Points/index.html)
 
 
+Transfer ratios → [HTML table](https://uscreditcardguide.github.io/Wings-of-the-Points/table.html)
+
+## Updating transfers
+
+Edit [the transfer CSV](_data/transfers.csv). Find the airline by its code and change the ratio in the program column. A blank cell means that the route is unavailable. GitHub Pages builds the chart and the HTML table from this file.
+
+For a new airline, add a row using an existing alliance value and color. The optional link_order field controls the order of the connections within an alliance. The row order controls the order of the airline nodes.
+
+
 ## Usage
 * It is better to view this chart on desktop. The screens on mobile devices are usually too narrow to have a good effect.
 * Move your mouse over the point name or airline name to highlight transfer relationships. 

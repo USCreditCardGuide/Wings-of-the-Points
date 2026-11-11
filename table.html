@@ -1,0 +1,78 @@
+---
+programs:
+  - id: chase
+    label: Chase Ultimate Rewards
+    short_label: Chase UR
+  - id: amex
+    label: American Express Membership Rewards
+    short_label: AmEx MR
+  - id: citi
+    label: Citi ThankYou Points
+    short_label: Citi TYP
+  - id: c1
+    label: Capital One Miles
+    short_label: Capital One
+  - id: bilt
+    label: Bilt Rewards
+    short_label: Bilt
+  - id: marriott
+    label: Marriott Bonvoy
+    short_label: Marriott
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Points Transfer Ratios | Wings of the Points</title>
+  <style>
+    body { margin: 0; color: #1f2937; background: #fff; font: 16px/1.5 system-ui, sans-serif; }
+    main { max-width: 52rem; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
+    a { color: #175584; }
+    h1 { margin: .5rem 0; font-size: clamp(1.45rem, 4vw, 2rem); line-height: 1.2; }
+    nav { display: flex; flex-wrap: wrap; gap: .45rem 1rem; margin-top: 1rem; }
+    table { margin-top: 1.5rem; width: 100%; border-collapse: collapse; }
+    caption { padding: .5rem .65rem; text-align: left; font-weight: 700; background: #ecf2f7; }
+    th, td { padding: .5rem .65rem; border-bottom: 1px solid #dbe3eb; text-align: left; vertical-align: top; }
+    thead th { color: #46556a; font-size: .875rem; }
+    tbody th { font-weight: 550; }
+    tbody tr:nth-child(even) { background: #f8fafc; }
+    tbody td { width: 6rem; font-variant-numeric: tabular-nums; }
+    .code { font-size: .85em; color: #526174; white-space: nowrap; }
+    .notes { margin-top: 1.25rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <a href="index.html">Wings of the Points chart</a>
+    <h1>Points transfer ratios</h1>
+    <nav aria-label="Points programs">
+      {% for program in page.programs %}
+      <a href="#{{ program.id }}">{{ program.short_label | escape }}</a>
+      {% endfor %}
+    </nav>
+
+    {% assign partners = site.data.transfers | sort_natural: "name" %}
+    {% for program in page.programs %}
+    <table id="{{ program.id }}">
+      <caption>{{ program.label | escape }}</caption>
+      <thead>
+        <tr><th scope="col">Transfer partner</th><th scope="col">Ratio</th></tr>
+      </thead>
+      <tbody>
+        {% for partner in partners %}
+        {% assign ratio = partner[program.id] | strip %}
+        {% if ratio != "" %}
+        <tr data-partner="{{ partner.code | escape }}">
+          <th scope="row">{{ partner.name | escape }} <span class="code">({{ partner.code | escape }})</span></th>
+          <td>{{ ratio | escape }}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endfor %}
+    <p class="notes"><a href="https://github.com/USCreditCardGuide/Wings-of-the-Points#note">Transfer notes</a> explain Citi card eligibility and Marriott transfer blocks.</p>
+  </main>
+</body>
+</html>
