@@ -1,0 +1,66 @@
+name: Publish Wings of the Points
+
+on:
+  push:
+    branches: [gh-pages]
+  workflow_dispatch:
+
+concurrency:
+  group: wings-pages-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions: {}
+
+jobs:
+  build:
+    if: github.ref == 'refs/heads/gh-pages'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      ready: ${{ steps.sync.outputs.ready }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Generate the chart and table
+        run: python3 build.py
+      - name: Sync the generated pages to the repository
+        id: sync
+        shell: bash
+        run: |
+          remote_ref=$(git ls-remote --exit-code origin refs/heads/gh-pages)
+          if [[ "$remote_ref" != "$GITHUB_SHA"$'\t'refs/heads/gh-pages ]]; then
+            echo "The branch has advanced. Skipping this run."
+            exit 0
+          fi
+
+          git add index.html table.html
+          if ! git diff --cached --quiet; then
+            git -c user.name='github-actions[bot]' \
+              -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+              commit -m 'Regenerate the transfer chart and table'
+            git push origin HEAD:refs/heads/gh-pages
+          fi
+          echo 'ready=true' >> "$GITHUB_OUTPUT"
+      - name: Collect the static site
+        if: steps.sync.outputs.ready == 'true'
+        run: |
+          mkdir _site
+          cp -r index.html table.html README.md LICENSE.txt d3.chart.sankey.min.modified.js logos vendor _site/
+      - uses: actions/upload-pages-artifact@v4
+        if: steps.sync.outputs.ready == 'true'
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    if: needs.build.outputs.ready == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment

@@ -7,11 +7,23 @@ Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html
 
 Transfer ratios → [HTML table](https://uscreditcardguide.github.io/Wings-of-the-Points/table.html)
 
+## Local preview
+
+Clone or download the repository and double-click `index.html` for the chart or `table.html` for the table. Both pages are ready to open in a browser. The chart loads some of its libraries from CDNs.
+
 ## Updating transfers
 
-Edit [the transfer CSV](_data/transfers.csv). Find the airline by its code and change the ratio in the program column. A blank cell means that the route is unavailable. GitHub Pages builds the chart and the HTML table from this file.
+Edit [the transfer CSV](_data/transfers.csv). Find the airline by its code and change the ratio in the program column. A blank cell means that the route is unavailable.
 
 For a new airline, add a row using an existing alliance value. The optional link_order field controls the order of the connections within an alliance. The row order controls the order of the airline nodes.
+
+GitHub Actions regenerates and publishes both pages after a push to `gh-pages`. Pull the branch after the workflow finishes to see the updated pages locally.
+
+To preview your own CSV edits before pushing, run this command from the repository folder with Python 3 installed, then refresh the pages in your browser.
+
+```sh
+python3 build.py
+```
 
 
 ## Usage
