@@ -1,175 +1,578 @@
----
-programs:
-  - id: chase
-    name: Chase Ultimate Rewards (UR)
-    chart_label: Chase UR
-    color: "#1565C0"
-  - id: amex
-    name: American Express Membership Rewards (MR)
-    chart_label: AmEx MR
-    color: "#2E7D32"
-  - id: citi
-    name: Citi ThankYou Points (TYP)
-    chart_label: Citi TYP
-    color: "#FDD835"
-  - id: c1
-    name: Capital One Miles
-    chart_label: Capital One
-    color: "#003365"
-  - id: bilt
-    name: Bilt Rewards
-    chart_label: Bilt Rewards
-    color: "#000000"
-  - id: marriott
-    name: Marriott Bonvoy
-    chart_label: Marriott Bonvoy
-    color: "#D32F2F"
----
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Wings of the Points</title>
-  <script defer src="https://d3js.org/d3.v3.min.js"></script>
-  <script defer src="vendor/d3.chart-0.3.0.min.js"></script>
-  <script defer src="d3.chart.sankey.min.modified.js"></script>
-  <script defer src="wings-chart.js"></script>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="vendor/d3.chart-0.3.0.min.js"></script>
+  <script src="d3.chart.sankey.min.modified.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/components/label.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/components/header.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.5.1/svg.min.js"></script>
   <style>
-    body {
-      max-width: 1600px;
-      margin: auto;
-      padding: 10px;
-      color: #202835;
-      font: 15px/1.5 system-ui, sans-serif;
-    }
-    a { color: #175584; }
-    a:focus-visible { outline: 2px solid #175584; outline-offset: 3px; }
-    .page-header { text-align: center; margin-bottom: .65rem; }
-    .page-header h1 { font-size: 1.45rem; line-height: 1.2; margin: 0 0 .35rem; }
-    .chart-scroll { overflow-x: auto; }
-    #chart {
-      position: relative;
-      min-width: 740px;
-      height: 90vh;
-      font: 13px sans-serif;
-    }
-    #chart > svg { display: block; }
-    .node rect { fill-opacity: .9; shape-rendering: crispEdges; stroke-width: 0; }
-    .node text { text-shadow: 0 1px 0 #fff; }
-    .link { fill: none; stroke: #000; stroke-opacity: .2; }
-    #box {
-      position: absolute;
-      z-index: 1;
-      box-sizing: border-box;
-      width: max-content;
-      max-width: 22rem;
-      padding: .55rem .7rem;
-      border: 1px solid #b5bdc8;
-      border-radius: .4rem;
-      background: #fff;
-      box-shadow: 0 2px 8px #20283520;
-      pointer-events: none;
-      line-height: 1.4;
-    }
-    #box strong { display: block; margin-top: .2rem; }
-    .transfer-ratios { max-width: 54rem; margin: 1.5rem auto 2.5rem; }
-    .transfer-ratios h2 { margin-bottom: .3rem; line-height: 1.2; }
-    .transfer-ratios p { margin-top: 0; }
-    .program-nav { display: flex; flex-wrap: wrap; gap: .35rem 1.05rem; }
-    .transfer-ratios table { width: 100%; border-collapse: collapse; margin-top: 1.75rem; }
-    .transfer-ratios caption {
-      padding: .45rem .7rem;
-      border-left: 4px solid var(--program-color);
-      background: #f0f4f8;
-      text-align: left;
-      font-weight: 700;
-    }
-    .transfer-ratios th, .transfer-ratios td {
-      padding: .55rem .7rem;
-      border-bottom: 1px solid #dce3eb;
-      text-align: left;
-      vertical-align: top;
-    }
-    .transfer-ratios thead th { font-size: .875rem; color: #48576a; }
-    .transfer-ratios tbody th { width: 48%; font-weight: 550; }
-    .transfer-ratios tbody tr:nth-child(even) { background: #f8fafc; }
-    .partner-code { color: #53637a; white-space: nowrap; font-size: .85em; }
-    .site-footer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: .5rem 1rem;
-      padding-block: 1rem;
-      border-top: 1px solid #dce3eb;
-      font-size: .875rem;
-    }
-    .site-footer img { display: block; }
-    @media (max-width: 480px) {
-      .transfer-ratios th, .transfer-ratios td { padding-inline: .45rem; }
-    }
+  body {
+    padding: 10px;
+    max-width: 1600px;
+    margin: auto;
+  }
+  #chart {
+    height: 90vh;
+    font: 13px sans-serif;
+  }
+  .node rect {
+    fill-opacity: .9;
+    shape-rendering: crispEdges;
+    stroke-width: 0;
+  }
+  .node text {
+    text-shadow: 0 1px 0 #fff;
+  }
+  .link {
+    fill: none;
+    stroke: #000;
+    stroke-opacity: .2;
+  }
+  #box {
+    height: 20px;
+    border: 1px solid;
+    background-color: #fff;
+    display: none;
+    position: absolute;
+    padding: 10px;
+    font-family: sans-serif;
+    top: 0;
+    pointer-events: none;
+    font-size: 80%; 
+  }
+  a:visited{
+    color: blue;
+  }
   </style>
 </head>
 <body>
-  <header class="page-header">
-    <h1>Wings of the Points</h1>
-    <a href="#transfer-ratios">View transfer ratios</a>
-  </header>
-  <main>
-    <div class="chart-scroll" id="chart-scroll" hidden>
-      <div id="chart">
-        <div id="box" hidden><span></span><strong></strong></div>
-      </div>
+  <div id="fake" style="display: none;">
+
+  </div>
+  <div class="row col-xs-12 center-xs middle-xs">
+    <div class="ui header large" style="margin-bottom: 10px;">Wings of the Points</div>
+  </div>
+  <div id="chart"></div>
+  <div id="box"></div>
+  <div class="row col-xs-12 center-xs middle-xs" style="text-decoration: none;">
+    <div>
+      <a target="_blank"  rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" style="text-decoration: none;">
+        <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" />
+      </a>
+      <span style="margin: 0 0.5rem;">|</span>
+      Copyright © <script type="text/JavaScript">document.write(new Date().getFullYear());</script>
+      <span style="margin: 0 0.5rem;">|</span>
+      <a target="_blank" href="https://www.uscreditcardguide.com/?utm_source=github&utm_medium=Wings-of-the-Points&utm_campaign=wings-the-points-chart"  style="text-decoration: none;">US Credit Card Guide</a>
+      <span style="margin: 0 0.5rem;">|</span>
+      <a target="_blank" href="https://github.com/physixfan/Wings-of-the-Points"  style="text-decoration: none;">
+       Github Repo
+      </a>
     </div>
-
-    {% assign partners = site.data.transfers | sort_natural: "name" %}
-    <section id="transfer-ratios" class="transfer-ratios" aria-labelledby="ratios-heading">
-      <h2 id="ratios-heading">Airline transfer partners and ratios</h2>
-      <p>Ratios show points sent to miles or points received. Card and bonus terms appear next to the ratio.</p>
-      <nav class="program-nav" aria-label="Jump to a points program">
-        {% for program in page.programs %}
-        <a href="#transfers-{{ program.id }}">{{ program.chart_label | escape }}</a>
-        {% endfor %}
-      </nav>
-
-      {% for program in page.programs %}
-      <table id="transfers-{{ program.id }}" style="--program-color: {{ program.color }}">
-        <caption>{{ program.name | escape }}</caption>
-        <thead>
-          <tr><th scope="col">Transfer partner</th><th scope="col">Transfer ratio</th></tr>
-        </thead>
-        <tbody>
-          {% for partner in partners %}
-          {% assign rate = partner[program.id] | strip %}
-          {% if rate != "" %}
-          <tr data-partner="{{ partner.code | escape }}">
-            <th scope="row">{{ partner.name | escape }} <span class="partner-code">({{ partner.code | escape }})</span></th>
-            <td>{{ rate | escape }}</td>
-          </tr>
-          {% endif %}
-          {% endfor %}
-        </tbody>
-      </table>
-      {% endfor %}
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
-      <img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" width="80" height="15">
-    </a>
-    <span>Copyright © {{ 'now' | date: '%Y' }}</span>
-    <a href="https://www.uscreditcardguide.com/?utm_source=github&amp;utm_medium=Wings-of-the-Points&amp;utm_campaign=wings-the-points-chart">US Credit Card Guide</a>
-    <a href="https://github.com/USCreditCardGuide/Wings-of-the-Points">GitHub repository</a>
-  </footer>
-  {% assign logos = site.static_files | where_exp: "file", "file.path contains '/logos/'" | map: "path" %}
-  <template id="transfer-data">
+  </div>
+  <script>
+  var colors = {
+    'environment':         '#edbd00',
+    'social':              '#367d85',
+    'animals':             '#97ba4c',
+    'health':              '#f5662b',
+    'research_ingredient': '#3f3e47',
+    'fallback':            '#9f9fa3'
+  };
+  var systems = [
+    { sc: 'chase', name: 'Chase UR'},
+    { sc: 'amex', name: 'AmEx MR'},
+    { sc: 'citi', name: 'Citi TYP'},
+    { sc: 'c1', name: 'Capital One'},
+    { sc: 'bilt', name: 'Bilt Rewards'},
+    { sc: 'marriott', name: 'Marriott Bonvoy'},
+    { sc: 'none', name: 'N/A'},
+  ]
+  var airlines = [
     {
-      "programs": {{ page.programs | jsonify | escape }},
-      "partners": {{ site.data.transfers | jsonify | escape }},
-      "logos": {{ logos | jsonify | escape }}
+      type: 'nonAliance',
+      airlines: [
+        { color: '#1565C0', sc: 'ei', name: 'Aer Lingus (AerClub/Avios)', },
+        { color: '#D84315', sc: 'cz', name: 'China Southern Airlines (Sky Pearl Club)', },
+        { color: '#1565C0', sc: 'ly', name: 'El Al (Matmid)', },
+        { color: '#1565C0', sc: 'ek', name: 'Emirates (Skywards)', },
+        { color: '#1565C0', sc: 'ey', name: 'Etihad (Etihad Guest)', },
+        { color: '#1565C0', sc: 'f9', name: 'Frontier (Frontier Miles)', },
+        { color: '#1565C0', sc: 'hu', name: 'Hainan Airlines (Fortune Wings Club)', },
+        { color: '#1565C0', sc: 'b6', name: 'JetBlue (TrueBlue)', },
+        { color: '#1565C0', sc: 'la', name: 'LATAM (LATAM Pass)', },
+        { color: '#1565C0', sc: 'wn', name: 'Southwest (Rapid Rewards)', },
+        { color: '#1565C0', sc: 'va', name: 'Virgin Australia (Velocity)', },
+        { color: '#1565C0', sc: 'vy', name: 'Vueling (Vueling Club/Avios)', },
+      ]
+    },
+    {
+      type: 'oneworld',
+      airlines: [
+        { color: '#00695C', sc: 'as', name: 'Alaska / Hawaiian Airlines (Atmos Rewards)', },
+        { color: '#00695C', sc: 'aa', name: 'American Airlines (AAdvantage)', },
+        { color: '#00695C', sc: 'ba', name: 'British Airways (The British Airways Club/Avios)', },
+        { color: '#00695C', sc: 'cx', name: 'Cathay Pacific (Asia Miles)', },
+        { color: '#00695C', sc: 'ay', name: 'Finnair (Finnair Plus)', },
+        { color: '#00695C', sc: 'ib', name: 'Iberia (Iberia Club/Avios)', },
+        { color: '#00695C', sc: 'jl', name: 'Japan Airlines (JAL Mileage Bank)', },
+        { color: '#00695C', sc: 'mh', name: 'Malaysia Airlines (Enrich)', },
+        { color: '#00695C', sc: 'wy', name: 'Oman Air (Sindbad)', },
+        { color: '#00695C', sc: 'qf', name: 'Qantas (Frequent Flyer)', },
+        { color: '#00695C', sc: 'qr', name: 'Qatar Airways (Privilege Club/Avios)', },
+        { color: '#00695C', sc: 'at', name: 'Royal Air Maroc (Safar Flyer)', },
+        { color: '#00695C', sc: 'rj', name: 'Royal Jordanian (Royal Club)', },
+        { color: '#00695C', sc: 's7', name: 'S7 Airlines (S7 Priority)', },
+        { color: '#00695C', sc: 'ul', name: 'SriLankan Airlines (FlySmiLes)', },
+      ]
+    },
+    {
+      type: 'skyteam',
+      airlines: [
+        { color: '#D84315', sc: 'su', name: 'Aeroflot (Aeroflot Bonus)', },
+        { color: '#D84315', sc: 'ar', name: 'Aerolíneas Argentinas (Aerolíneas Plus)', },
+        { color: '#D84315', sc: 'am', name: 'Aeroméxico (Aeromexico Rewards)', },
+        { color: '#D84315', sc: 'ux', name: 'Air Europa (Suma)', },
+        { color: '#D84315', sc: 'af', name: 'Air France (Flying Blue)', },
+        { color: '#D84315', sc: 'ci', name: 'China Airlines (Dynasty Flyer)', },
+        { color: '#D84315', sc: 'mu', name: 'China Eastern Airlines (Eastern Miles)', },
+        { color: '#D84315', sc: 'dl', name: 'Delta Air Lines (SkyMiles)', },
+        { color: '#D84315', sc: 'ga', name: 'Garuda Indonesia (GarudaMiles)', },
+        { color: '#D84315', sc: 'kq', name: 'Kenya Airways (Asante Rewards)', },
+        //{ color: '#D84315', sc: 'kl', name: 'KLM (Flying Blue)', },
+        { color: '#D84315', sc: 'ke', name: 'Korean Air (SKYPASS)', },
+        { color: '#D84315', sc: 'me', name: 'Middle East Airlines (Cedar Miles)', },
+        { color: '#D84315', sc: 'sv', name: 'Saudia (Al Fursan Loyalty)', },
+        { color: '#D84315', sc: 'sk', name: 'Scandinavian Airlines (EuroBonus)', },
+        //{ color: '#D84315', sc: 'ro', name: 'TAROM (Flying Blue)', },
+        { color: '#D84315', sc: 'vn', name: 'Vietnam Airlines (LotusMiles)', },
+        { color: '#1565C0', sc: 'vs', name: 'Virgin Atlantic (Flying Club)', },
+        { color: '#D84315', sc: 'mf', name: 'Xiamen Airlines (Egret Card)', },
+      ]
+    },
+    {
+      type: 'starAlliance',
+      airlines: [
+        //{ color: '#FFD600', sc: 'jp', name: 'Adria Airways (Miles & More)', },
+        { color: '#FFD600', sc: 'a3', name: 'Aegean Airlines (Miles+Bonus)', },
+        { color: '#FFD600', sc: 'ac', name: 'Air Canada (Aeroplan)', },
+        { color: '#FFD600', sc: 'ca', name: 'Air China (PhoenixMiles)', },
+        { color: '#FFD600', sc: 'ai', name: 'Air India (Maharaja Club)', },
+        { color: '#FFD600', sc: 'nz', name: 'Air New Zealand (Koru/Airpoints)', },
+        { color: '#FFD600', sc: 'nh', name: 'All Nippon Airways (ANA Mileage Club)', },
+        { color: '#FFD600', sc: 'oz', name: 'Asiana Airlines (Asiana Club)', },
+        //{ color: '#FFD600', sc: 'os', name: 'Austrian Airlines (Miles & More)', },
+        { color: '#FFD600', sc: 'av', name: 'Avianca (LifeMiles)', },
+        //{ color: '#FFD600', sc: 'sn', name: 'Brussels Airlines (Miles & More)', },
+        { color: '#FFD600', sc: 'cm', name: 'Copa Airlines (ConnectMiles)', },
+        //{ color: '#FFD600', sc: 'ou', name: 'Croatia Airlines (Miles & More)', },
+        { color: '#FFD600', sc: 'ms', name: 'EgyptAir (EgyptAir Plus)', },
+        { color: '#FFD600', sc: 'et', name: 'Ethiopian Airlines (ShebaMiles)', },
+        { color: '#FFD600', sc: 'br', name: 'EVA Air (Infinity MileageLands)', },
+        //{ color: '#FFD600', sc: 'lo', name: 'LOT Polish Airlines (Miles & More)', },
+        { color: '#FFD600', sc: 'lh', name: 'Lufthansa (Miles & More)', },
+        { color: '#FFD600', sc: 'sq', name: 'Singapore Airlines (KrisFlyer)', },
+        { color: '#FFD600', sc: 'sa', name: 'South African Airways (Voyager)', },
+        //{ color: '#FFD600', sc: 'lx', name: 'SWISS (Miles & More)', },
+        { color: '#FFD600', sc: 'tp', name: 'TAP Portugal (TAP Miles&Go)', },
+        { color: '#FFD600', sc: 'tg', name: 'Thai Airways (Royal Orchid Plus)', },
+        { color: '#FFD600', sc: 'tk', name: 'Turkish Airlines (Miles&Smiles)', },
+        { color: '#FFD600', sc: 'ua', name: 'United Airlines (MileagePlus)', },
+      ]
+    },
+
+  ];
+  var flatAirlines = _.flatten([
+    _.map(_.find(airlines, o => o.type === 'nonAliance').airlines, o => Object.assign(o, { type: 'nonAliance'})),
+    _.map(_.find(airlines, o => o.type === 'oneworld').airlines, o => Object.assign(o, { type: 'oneworld'})),
+    _.map(_.find(airlines, o => o.type === 'skyteam').airlines, o => Object.assign(o, { type: 'skyteam'})),
+    _.map(_.find(airlines, o => o.type === 'starAlliance').airlines, o => Object.assign(o, { type: 'starAlliance'})),
+  ]);
+  flatAirlines = _.map(flatAirlines, o => {
+    // if (o.type === 'starAlliance' || o.type === 'nonAliance') {
+    // } else {
+    //   return Object.assign(o, { name: `[${o.sc.toUpperCase()}] ${o.name}`})
+    // }
+    return Object.assign(o, { name: `${o.name} [${o.sc.toUpperCase()}] `})
+  });
+
+  var temp1 = _.map(systems, o => ({ sc: o.sc, name: o.name, id: o.name.replace('-', '').replace(/\s+/g, '-').toLowerCase() }));
+  var temp2 = _.map(_.find(airlines, o => o.type === 'oneworld').airlines, o => ({ sc: o.sc, name: o.name, id: o.name.replace('-', '').replace(/\s+/g, '-').toLowerCase() }));
+  var temp3 = _.map(_.find(airlines, o => o.type === 'skyteam').airlines, o => ({ sc: o.sc, name: o.name, id: o.name.replace('-', '').replace(/\s+/g, '-').toLowerCase() }));
+  var temp4 = _.map(_.find(airlines, o => o.type === 'starAlliance').airlines, o => ({ sc: o.sc, name: o.name, id: o.name.replace('-', '').replace(/\s+/g, '-').toLowerCase() }));
+  var temp5 = _.map(_.find(airlines, o => o.type === 'nonAliance').airlines, o => ({ sc: o.sc, name: o.name, id: o.name.replace('-', '').replace(/\s+/g, '-').toLowerCase() }));
+  var nodes = temp1.concat(temp2).concat(temp3).concat(temp4).concat(temp5);
+  // console.log(nodes);
+
+  var relations = [{
+    type: 'nonAliance',
+    relations: [
+      [{ s: 'amex', t: 'ei', f: 1 }, { s: 'citi', t: 'ei', f: 0 }, { s: 'chase', t: 'ei', f: 1 }, { s: 'c1', t: 'ei', f: 0 }, { s: 'bilt', t: 'ei', f: 1 }, { s: 'marriott', t: 'ei', f: 1 }],
+      [{ s: 'amex', t: 'cz', f: 0 }, { s: 'citi', t: 'cz', f: 0 }, { s: 'chase', t: 'cz', f: 0 }, { s: 'c1', t: 'cz', f: 0 }, { s: 'bilt', t: 'cz', f: 0 }, { s: 'marriott', t: 'cz', f: 1 }],
+      [{ s: 'amex', t: 'ek', f: 1 }, { s: 'citi', t: 'ek', f: 1 }, { s: 'chase', t: 'ek', f: 0 }, { s: 'c1', t: 'ek', f: 1 }, { s: 'bilt', t: 'ek', f: 1 }, { s: 'marriott', t: 'ek', f: 1 }],
+      [{ s: 'amex', t: 'ly', f: 0 }, { s: 'citi', t: 'ly', f: 0 }, { s: 'chase', t: 'ly', f: 0 }, { s: 'c1', t: 'ly', f: 0 }, { s: 'bilt', t: 'ly', f: 0 }, { s: 'marriott', t: 'ly', f: 0 }],
+      [{ s: 'amex', t: 'ey', f: 0 }, { s: 'citi', t: 'ey', f: 1 }, { s: 'chase', t: 'ey', f: 0 }, { s: 'c1', t: 'ey', f: 1 }, { s: 'bilt', t: 'ey', f: 1 }, { s: 'marriott', t: 'ey', f: 1 }],
+      [{ s: 'amex', t: 'f9', f: 0 }, { s: 'citi', t: 'f9', f: 0 }, { s: 'chase', t: 'f9', f: 0 }, { s: 'c1', t: 'f9', f: 0 }, { s: 'bilt', t: 'f9', f: 0 }, { s: 'marriott', t: 'f9', f: 1 }],
+      [{ s: 'amex', t: 'hu', f: 0 }, { s: 'citi', t: 'hu', f: 0 }, { s: 'chase', t: 'hu', f: 0 }, { s: 'c1', t: 'hu', f: 0 }, { s: 'bilt', t: 'hu', f: 0 }, { s: 'marriott', t: 'hu', f: 1 }],
+      [{ s: 'amex', t: 'b6', f: 1 }, { s: 'citi', t: 'b6', f: 1 }, { s: 'chase', t: 'b6', f: 1 }, { s: 'c1', t: 'b6', f: 1 }, { s: 'bilt', t: 'b6', f: 1 }, { s: 'marriott', t: 'b6', f: 0 }],
+      [{ s: 'amex', t: 'la', f: 0 }, { s: 'citi', t: 'la', f: 0 }, { s: 'chase', t: 'la', f: 0 }, { s: 'c1', t: 'la', f: 0 }, { s: 'bilt', t: 'la', f: 0 }, { s: 'marriott', t: 'la', f: 1 }],
+      [{ s: 'amex', t: 'wn', f: 0 }, { s: 'citi', t: 'wn', f: 0 }, { s: 'chase', t: 'wn', f: 1 }, { s: 'c1', t: 'wn', f: 0 }, { s: 'bilt', t: 'wn', f: 1 }, { s: 'marriott', t: 'wn', f: 1 }],
+      [{ s: 'amex', t: 'va', f: 0 }, { s: 'citi', t: 'va', f: 0 }, { s: 'chase', t: 'va', f: 0 }, { s: 'c1', t: 'va', f: 0 }, { s: 'bilt', t: 'va', f: 0 }, { s: 'marriott', t: 'va', f: 1 }],
+      [{ s: 'amex', t: 'vy', f: 0 }, { s: 'citi', t: 'vy', f: 0 }, { s: 'chase', t: 'vy', f: 0 }, { s: 'c1', t: 'vy', f: 0 }, { s: 'bilt', t: 'vy', f: 0 }, { s: 'marriott', t: 'vy', f: 1 }],
+    ]
+  }, {
+    type: 'oneworld',
+    relations: [
+      [{ s: 'amex', t: 'as', f: 0 }, { s: 'citi', t: 'as', f: 0 }, { s: 'chase', t: 'as', f: 0 }, { s: 'c1', t: 'as', f: 0 }, { s: 'bilt', t: 'as', f: 1 }, { s: 'marriott', t: 'as', f: 1 }],
+      [{ s: 'amex', t: 'aa', f: 0 }, { s: 'citi', t: 'aa', f: 1 }, { s: 'chase', t: 'aa', f: 0 }, { s: 'c1', t: 'aa', f: 0 }, { s: 'bilt', t: 'aa', f: 0 }, { s: 'marriott', t: 'aa', f: 1 }],
+      [{ s: 'amex', t: 'ba', f: 1 }, { s: 'citi', t: 'ba', f: 0 }, { s: 'chase', t: 'ba', f: 1 }, { s: 'c1', t: 'ba', f: 1 }, { s: 'bilt', t: 'ba', f: 1 }, { s: 'marriott', t: 'ba', f: 1 }],
+      [{ s: 'amex', t: 'ib', f: 1 }, { s: 'citi', t: 'ib', f: 0 }, { s: 'chase', t: 'ib', f: 1 }, { s: 'c1', t: 'ib', f: 0 }, { s: 'bilt', t: 'ib', f: 1 }, { s: 'marriott', t: 'ib', f: 1 }],
+      [{ s: 'amex', t: 'cx', f: 1 }, { s: 'citi', t: 'cx', f: 1 }, { s: 'chase', t: 'cx', f: 0 }, { s: 'c1', t: 'cx', f: 1 }, { s: 'bilt', t: 'cx', f: 1 }, { s: 'marriott', t: 'cx', f: 1 }],
+      [{ s: 'amex', t: 'ay', f: 0 }, { s: 'citi', t: 'ay', f: 0 }, { s: 'chase', t: 'ay', f: 0 }, { s: 'c1', t: 'ay', f: 1 }, { s: 'bilt', t: 'ay', f: 0 }, { s: 'marriott', t: 'ay', f: 0 }],
+      [{ s: 'amex', t: 'jl', f: 0 }, { s: 'citi', t: 'jl', f: 1 }, { s: 'chase', t: 'jl', f: 0 }, { s: 'c1', t: 'jl', f: 1 }, { s: 'bilt', t: 'jl', f: 1 }, { s: 'marriott', t: 'jl', f: 1 }],
+      [{ s: 'amex', t: 'mh', f: 0 }, { s: 'citi', t: 'mh', f: 0 }, { s: 'chase', t: 'mh', f: 0 }, { s: 'c1', t: 'mh', f: 0 }, { s: 'bilt', t: 'mh', f: 0 }, { s: 'marriott', t: 'mh', f: 0 }],
+      [{ s: 'amex', t: 'wy', f: 0 }, { s: 'citi', t: 'wy', f: 0 }, { s: 'chase', t: 'wy', f: 0 }, { s: 'c1', t: 'wy', f: 0 }, { s: 'bilt', t: 'wy', f: 0 }, { s: 'marriott', t: 'wy', f: 0 }],
+      [{ s: 'amex', t: 'qf', f: 1 }, { s: 'citi', t: 'qf', f: 1 }, { s: 'chase', t: 'qf', f: 0 }, { s: 'c1', t: 'qf', f: 1 }, { s: 'bilt', t: 'qf', f: 0 }, { s: 'marriott', t: 'qf', f: 1 }],
+      [{ s: 'amex', t: 'qr', f: 1 }, { s: 'citi', t: 'qr', f: 1 }, { s: 'chase', t: 'qr', f: 0 }, { s: 'c1', t: 'qr', f: 1 }, { s: 'bilt', t: 'qr', f: 1 }, { s: 'marriott', t: 'qr', f: 1 }],
+      [{ s: 'amex', t: 'at', f: 0 }, { s: 'citi', t: 'at', f: 0 }, { s: 'chase', t: 'at', f: 0 }, { s: 'c1', t: 'at', f: 0 }, { s: 'bilt', t: 'at', f: 0 }, { s: 'marriott', t: 'at', f: 0 }],
+      [{ s: 'amex', t: 'rj', f: 0 }, { s: 'citi', t: 'rj', f: 0 }, { s: 'chase', t: 'rj', f: 0 }, { s: 'c1', t: 'rj', f: 0 }, { s: 'bilt', t: 'rj', f: 0 }, { s: 'marriott', t: 'rj', f: 0 }],
+      [{ s: 'amex', t: 's7', f: 0 }, { s: 'citi', t: 's7', f: 0 }, { s: 'chase', t: 's7', f: 0 }, { s: 'c1', t: 's7', f: 0 }, { s: 'bilt', t: 's7', f: 0 }, { s: 'marriott', t: 's7', f: 0 }],
+      [{ s: 'amex', t: 'ul', f: 0 }, { s: 'citi', t: 'ul', f: 0 }, { s: 'chase', t: 'ul', f: 0 }, { s: 'c1', t: 'ul', f: 0 }, { s: 'bilt', t: 'ul', f: 0 }, { s: 'marriott', t: 'ul', f: 0 }],
+    ]
+  }, {
+    type: 'skyteam',
+    relations: [
+      [{ s: 'amex', t: 'su', f: 0 }, { s: 'citi', t: 'su', f: 0 }, { s: 'chase', t: 'su', f: 0 }, { s: 'c1', t: 'su', f: 0 }, { s: 'bilt', t: 'su', f: 0 }, { s: 'marriott', t: 'su', f: 0 }],
+      [{ s: 'amex', t: 'ar', f: 0 }, { s: 'citi', t: 'ar', f: 0 }, { s: 'chase', t: 'ar', f: 0 }, { s: 'c1', t: 'ar', f: 0 }, { s: 'bilt', t: 'ar', f: 0 }, { s: 'marriott', t: 'ar', f: 0 }],
+      [{ s: 'amex', t: 'am', f: 1 }, { s: 'citi', t: 'am', f: 0 }, { s: 'chase', t: 'am', f: 0 }, { s: 'c1', t: 'am', f: 1 }, { s: 'bilt', t: 'am', f: 0 }, { s: 'marriott', t: 'am', f: 1 }],
+      [{ s: 'amex', t: 'ux', f: 0 }, { s: 'citi', t: 'ux', f: 0 }, { s: 'chase', t: 'ux', f: 0 }, { s: 'c1', t: 'ux', f: 0 }, { s: 'bilt', t: 'ux', f: 0 }, { s: 'marriott', t: 'ux', f: 0 }],
+      [{ s: 'amex', t: 'af', f: 1 }, { s: 'citi', t: 'af', f: 1 }, { s: 'chase', t: 'af', f: 1 }, { s: 'c1', t: 'af', f: 1 }, { s: 'bilt', t: 'af', f: 1 }, { s: 'marriott', t: 'af', f: 1 }],
+      [{ s: 'amex', t: 'ci', f: 0 }, { s: 'citi', t: 'ci', f: 0 }, { s: 'chase', t: 'ci', f: 0 }, { s: 'c1', t: 'ci', f: 0 }, { s: 'bilt', t: 'ci', f: 0 }, { s: 'marriott', t: 'ci', f: 0 }],
+      [{ s: 'amex', t: 'mu', f: 0 }, { s: 'citi', t: 'mu', f: 0 }, { s: 'chase', t: 'mu', f: 0 }, { s: 'c1', t: 'mu', f: 0 }, { s: 'bilt', t: 'mu', f: 0 }, { s: 'marriott', t: 'mu', f: 0 }],
+      [{ s: 'amex', t: 'dl', f: 1 }, { s: 'citi', t: 'dl', f: 0 }, { s: 'chase', t: 'dl', f: 0 }, { s: 'c1', t: 'dl', f: 0 }, { s: 'bilt', t: 'dl', f: 0 }, { s: 'marriott', t: 'dl', f: 1 }],
+      [{ s: 'amex', t: 'ga', f: 0 }, { s: 'citi', t: 'ga', f: 0 }, { s: 'chase', t: 'ga', f: 0 }, { s: 'c1', t: 'ga', f: 0 }, { s: 'bilt', t: 'ga', f: 0 }, { s: 'marriott', t: 'ga', f: 0 }],
+      [{ s: 'amex', t: 'kq', f: 0 }, { s: 'citi', t: 'kq', f: 0 }, { s: 'chase', t: 'kq', f: 0 }, { s: 'c1', t: 'kq', f: 0 }, { s: 'bilt', t: 'kq', f: 0 }, { s: 'marriott', t: 'kq', f: 0 }],
+      //[{ s: 'amex', t: 'kl', f: 1 }, { s: 'citi', t: 'kl', f: 1 }, { s: 'chase', t: 'kl', f: 1 }, { s: 'c1', t: 'kl', f: 1 }, { s: 'marriott', t: 'kl', f: 1 }],
+      [{ s: 'amex', t: 'ke', f: 0 }, { s: 'citi', t: 'ke', f: 0 }, { s: 'chase', t: 'ke', f: 0 }, { s: 'c1', t: 'ke', f: 0 }, { s: 'bilt', t: 'ke', f: 0 }, { s: 'marriott', t: 'ke', f: 0 }],
+      [{ s: 'amex', t: 'me', f: 0 }, { s: 'citi', t: 'me', f: 0 }, { s: 'chase', t: 'me', f: 0 }, { s: 'c1', t: 'me', f: 0 }, { s: 'bilt', t: 'me', f: 0 }, { s: 'marriott', t: 'me', f: 0 }],
+      [{ s: 'amex', t: 'sv', f: 0 }, { s: 'citi', t: 'sv', f: 0 }, { s: 'chase', t: 'sv', f: 0 }, { s: 'c1', t: 'sv', f: 0 }, { s: 'bilt', t: 'sv', f: 0 }, { s: 'marriott', t: 'sv', f: 1 }],
+      [{ s: 'amex', t: 'sk', f: 0 }, { s: 'citi', t: 'sk', f: 0 }, { s: 'chase', t: 'sk', f: 0 }, { s: 'c1', t: 'sk', f: 0 }, { s: 'bilt', t: 'sk', f: 0 }, { s: 'marriott', t: 'sk', f: 0 }],
+      //[{ s: 'amex', t: 'ro', f: 1 }, { s: 'citi', t: 'ro', f: 1 }, { s: 'chase', t: 'ro', f: 1 }, { s: 'c1', t: 'ro', f: 1 }, { s: 'marriott', t: 'ro', f: 1 }],
+      [{ s: 'amex', t: 'vn', f: 0 }, { s: 'citi', t: 'vn', f: 0 }, { s: 'chase', t: 'vn', f: 0 }, { s: 'c1', t: 'vn', f: 0 }, { s: 'bilt', t: 'vn', f: 0 }, { s: 'marriott', t: 'vn', f: 0 }],
+      [{ s: 'amex', t: 'vs', f: 1 }, { s: 'citi', t: 'vs', f: 1 }, { s: 'chase', t: 'vs', f: 1 }, { s: 'c1', t: 'vs', f: 1 }, { s: 'bilt', t: 'vs', f: 1 }, { s: 'marriott', t: 'vs', f: 1 }],
+      [{ s: 'amex', t: 'mf', f: 0 }, { s: 'citi', t: 'mf', f: 0 }, { s: 'chase', t: 'mf', f: 0 }, { s: 'c1', t: 'mf', f: 0 }, { s: 'bilt', t: 'mf', f: 0 }, { s: 'marriott', t: 'mf', f: 0 }],
+    ]
+  }, {
+    type: 'starAlliance',
+    relations: [
+      //[{ s: 'amex', t: 'jp', f: 0 }, { s: 'citi', t: 'jp', f: 0 }, { s: 'chase', t: 'jp', f: 0 }, { s: 'c1', t: 'jp', f: 0 }, { s: 'marriott', t: 'jp', f: 0 }],
+      [{ s: 'amex', t: 'a3', f: 0 }, { s: 'citi', t: 'a3', f: 0 }, { s: 'chase', t: 'a3', f: 0 }, { s: 'c1', t: 'a3', f: 0 }, { s: 'bilt', t: 'a3', f: 0 }, { s: 'marriott', t: 'a3', f: 1 }],
+      [{ s: 'amex', t: 'ac', f: 1 }, { s: 'citi', t: 'ac', f: 0 }, { s: 'chase', t: 'ac', f: 1 }, { s: 'c1', t: 'ac', f: 1 }, { s: 'bilt', t: 'ac', f: 1 }, { s: 'marriott', t: 'ac', f: 1 }],
+      [{ s: 'amex', t: 'ca', f: 0 }, { s: 'citi', t: 'ca', f: 0 }, { s: 'chase', t: 'ca', f: 0 }, { s: 'c1', t: 'ca', f: 0 }, { s: 'bilt', t: 'ca', f: 0 }, { s: 'marriott', t: 'ca', f: 1 }],
+      [{ s: 'amex', t: 'ai', f: 0 }, { s: 'citi', t: 'ai', f: 0 }, { s: 'chase', t: 'ai', f: 0 }, { s: 'c1', t: 'ai', f: 0 }, { s: 'bilt', t: 'ai', f: 0 }, { s: 'marriott', t: 'ai', f: 0 }],
+      [{ s: 'amex', t: 'nz', f: 0 }, { s: 'citi', t: 'nz', f: 0 }, { s: 'chase', t: 'nz', f: 0 }, { s: 'c1', t: 'nz', f: 0 }, { s: 'bilt', t: 'nz', f: 0 }, { s: 'marriott', t: 'nz', f: 1 }],
+      [{ s: 'amex', t: 'nh', f: 1 }, { s: 'citi', t: 'nh', f: 0 }, { s: 'chase', t: 'nh', f: 0 }, { s: 'c1', t: 'nh', f: 0 }, { s: 'bilt', t: 'nh', f: 0 }, { s: 'marriott', t: 'nh', f: 1 }],
+      [{ s: 'amex', t: 'oz', f: 0 }, { s: 'citi', t: 'oz', f: 0 }, { s: 'chase', t: 'oz', f: 0 }, { s: 'c1', t: 'oz', f: 0 }, { s: 'bilt', t: 'oz', f: 0 }, { s: 'marriott', t: 'oz', f: 0 }],
+      //[{ s: 'amex', t: 'os', f: 0 }, { s: 'citi', t: 'os', f: 0 }, { s: 'chase', t: 'os', f: 0 }, { s: 'c1', t: 'os', f: 0 }, { s: 'marriott', t: 'os', f: 0 }],
+      [{ s: 'amex', t: 'av', f: 1 }, { s: 'citi', t: 'av', f: 1 }, { s: 'chase', t: 'av', f: 0 }, { s: 'c1', t: 'av', f: 1 }, { s: 'bilt', t: 'av', f: 1 }, { s: 'marriott', t: 'av', f: 1 }],
+      //[{ s: 'amex', t: 'sn', f: 0 }, { s: 'citi', t: 'sn', f: 0 }, { s: 'chase', t: 'sn', f: 0 }, { s: 'c1', t: 'sn', f: 0 }, { s: 'marriott', t: 'sn', f: 0 }],
+      [{ s: 'amex', t: 'cm', f: 0 }, { s: 'citi', t: 'cm', f: 1 }, { s: 'chase', t: 'cm', f: 0 }, { s: 'c1', t: 'cm', f: 1 }, { s: 'bilt', t: 'cm', f: 0 }, { s: 'marriott', t: 'cm', f: 1 }],
+      //[{ s: 'amex', t: 'ou', f: 0 }, { s: 'citi', t: 'ou', f: 0 }, { s: 'chase', t: 'ou', f: 0 }, { s: 'c1', t: 'ou', f: 0 }, { s: 'marriott', t: 'ou', f: 0 }],
+      [{ s: 'amex', t: 'ms', f: 0 }, { s: 'citi', t: 'ms', f: 0 }, { s: 'chase', t: 'ms', f: 0 }, { s: 'c1', t: 'ms', f: 0 }, { s: 'bilt', t: 'ms', f: 0 }, { s: 'marriott', t: 'ms', f: 0 }],
+      [{ s: 'amex', t: 'et', f: 0 }, { s: 'citi', t: 'et', f: 0 }, { s: 'chase', t: 'et', f: 0 }, { s: 'c1', t: 'et', f: 0 }, { s: 'bilt', t: 'et', f: 0 }, { s: 'marriott', t: 'et', f: 1 }],
+      [{ s: 'amex', t: 'br', f: 0 }, { s: 'citi', t: 'br', f: 1 }, { s: 'chase', t: 'br', f: 0 }, { s: 'c1', t: 'br', f: 1 }, { s: 'bilt', t: 'br', f: 0 }, { s: 'marriott', t: 'br', f: 0 }],
+      //[{ s: 'amex', t: 'lo', f: 0 }, { s: 'citi', t: 'lo', f: 0 }, { s: 'chase', t: 'lo', f: 0 }, { s: 'c1', t: 'lo', f: 0 }, { s: 'marriott', t: 'lo', f: 0 }],
+      [{ s: 'amex', t: 'lh', f: 0 }, { s: 'citi', t: 'lh', f: 0 }, { s: 'chase', t: 'lh', f: 0 }, { s: 'c1', t: 'lh', f: 0 }, { s: 'bilt', t: 'lh', f: 0 }, { s: 'marriott', t: 'lh', f: 0 }],
+      [{ s: 'amex', t: 'sq', f: 1 }, { s: 'citi', t: 'sq', f: 1 }, { s: 'chase', t: 'sq', f: 1 }, { s: 'c1', t: 'sq', f: 1 }, { s: 'bilt', t: 'sq', f: 0 }, { s: 'marriott', t: 'sq', f: 1 }],
+      [{ s: 'amex', t: 'sa', f: 0 }, { s: 'citi', t: 'sa', f: 0 }, { s: 'chase', t: 'sa', f: 0 }, { s: 'c1', t: 'sa', f: 0 }, { s: 'bilt', t: 'sa', f: 0 }, { s: 'marriott', t: 'sa', f: 0 }],
+      //[{ s: 'amex', t: 'lx', f: 0 }, { s: 'citi', t: 'lx', f: 0 }, { s: 'chase', t: 'lx', f: 0 }, { s: 'c1', t: 'lx', f: 0 }, { s: 'marriott', t: 'lx', f: 0 }],
+      [{ s: 'amex', t: 'tp', f: 0 }, { s: 'citi', t: 'tp', f: 0 }, { s: 'chase', t: 'tp', f: 0 }, { s: 'c1', t: 'tp', f: 1 }, { s: 'bilt', t: 'tp', f: 1 }, { s: 'marriott', t: 'tp', f: 1 }],
+      [{ s: 'amex', t: 'tg', f: 0 }, { s: 'citi', t: 'tg', f: 1 }, { s: 'chase', t: 'tg', f: 0 }, { s: 'c1', t: 'tg', f: 0 }, { s: 'bilt', t: 'tg', f: 0 }, { s: 'marriott', t: 'tg', f: 1 }],
+      [{ s: 'amex', t: 'tk', f: 0 }, { s: 'citi', t: 'tk', f: 1 }, { s: 'chase', t: 'tk', f: 0 }, { s: 'c1', t: 'tk', f: 1 }, { s: 'bilt', t: 'tk', f: 1 }, { s: 'marriott', t: 'tk', f: 1 }],
+      [{ s: 'amex', t: 'ua', f: 0 }, { s: 'citi', t: 'ua', f: 0 }, { s: 'chase', t: 'ua', f: 1 }, { s: 'c1', t: 'ua', f: 0 }, { s: 'bilt', t: 'ua', f: 1}, { s: 'marriott', t: 'ua', f: 1 }],
+    ]
+  }];
+
+  var flatRelations = _.flattenDeep([
+    _.map(_.find(relations, o => o.type === 'nonAliance').relations, o => {
+      if (_.filter(o, oo => oo.f === 1).length > 0) {
+        return _.map(_.filter(o, oo => oo.f === 1), oo => Object.assign(oo, { type: 'nonAliance'}));
+      } else { return { s: 'none', t: o[0].t, type: 'nonAliance' }; }
+    }),                                    
+    _.map(_.find(relations, o => o.type === 'oneworld').relations, o => {
+      if (_.filter(o, oo => oo.f === 1).length > 0) {
+        return _.map(_.filter(o, oo => oo.f === 1), oo => Object.assign(oo, { type: 'oneworld'}));
+      } else { return { s: 'none', t: o[0].t, type: 'oneworld' }; }
+    }),
+    _.map(_.find(relations, o => o.type === 'skyteam').relations, o => {
+      if (_.filter(o, oo => oo.f === 1).length > 0) {
+        return _.map(_.filter(o, oo => oo.f === 1), oo => Object.assign(oo, { type: 'skyteam'}));
+      } else { return { s: 'none', t: o[0].t, type: 'skyteam' }; }
+    }),
+    _.map(_.find(relations, o => o.type === 'starAlliance').relations, o => {
+      if (_.filter(o, oo => oo.f === 1).length > 0) {
+        return _.map(_.filter(o, oo => oo.f === 1), oo => Object.assign(oo, { type: 'starAlliance'}));
+      } else { return { s: 'none', t: o[0].t, type: 'starAlliance' }; }
+    }),
+  ]);
+
+  console.log(flatRelations);
+
+  let left = 0;
+  let right = 0;
+  console.log('Num of flatRelations', flatRelations.length);
+  var links = _.map(flatRelations, o => {
+    if (o.type === 'oneworld' || o.type === 'skyteam') {
+      left += 1;
+      var target = _.findIndex(nodes, oo => oo.sc === o.s);
+      var source = _.findIndex(nodes, oo => oo.sc === o.t);
+    } else {
+      right += 1;
+      var source = _.findIndex(nodes, oo => oo.sc === o.s);
+      var target = _.findIndex(nodes, oo => oo.sc === o.t);
     }
-  </template>
+    var value = 1 / _.filter(flatRelations, oo => oo.t === o.t).length;
+    return { source, target, value };
+  });
+  console.log(left, right);
+
+  links = _.orderBy(links, 'target.sc');
+  console.log('links', links);
+
+  var data = {
+    nodes, links,
+  }
+
+  var chaseColor = '#1565C0';
+  var amexColor = '#2E7D32';
+  var citiColor = '#FDD835';
+  var c1Color = '#003365';
+  var biltColor = '#000000';
+  var marriottColor = '#D32F2F';
+  var noneColor = '#808080';
+
+  var rates = {
+    "chase"   : {
+      'ba': "1:1",
+      'ib': "1:1",
+      'ei': "1:1",
+      'wn': "1:1",
+      'vs': "1:1",
+      'sq': "1:1",
+      'ua': "1:1",
+      'af': "1:1",
+      //'kl': "1:1",
+      //'ro': "1:1",
+      'b6': "1:1",
+      //'ek': "1:1",
+      'ac': "1:1",
+    },
+    "amex"    : {
+      'av': "1:1",
+      'ek': "1:0.8",
+      //'ey': "1:1",
+      'b6': "1:0.8",
+      'ac': "1:1",
+      'nh': "1:1",
+      'sq': "1:1",
+      'ba': "1:1",
+      'ib': "1:1",
+      'ei': "1:1",
+      'cx': "1:0.8",
+      'qf': "1:1",
+      'am': "1:1.6",
+      'af': "1:1",
+      //'kl': "1:1",
+      //'ro': "1:1",
+      'dl': "1:1",
+      'vs': "1:1",
+      'qr': "1:1",
+    },
+    "citi"    : {
+      'av': "1:1",
+      'cx': "1:1",
+      'ey': "1:1",
+      'br': "1:1",
+      'af': "1:1",
+      //'kl': "1:1",
+      //'ro': "1:1",
+      'vs': "1:1",
+      'sq': "1:1",
+      'tg': "1:1",
+      'qf': "1:1",
+      'qr': "1:1",
+      'b6': "1:1",
+      'tk': "1:1",
+      //'am': "1:1",
+      'ek': "1:0.8",
+      'aa': "1:1",
+      'jl': "1:1",
+      'cm': "1:1",
+    },
+    "c1"      : {
+      'am': "1:1",
+      'ac': "1:1",
+      'af': "1:1",
+      //'kl': "2:1.5",
+      //'ro': "2:1.5",
+      'av': "1:1",
+      'ek': "1:0.75",
+      'ay': "1:1",
+      'cx': "1:1",
+      'ey': "1:1",
+      'br': "1:0.75",
+      'qf': "1:1",
+      'qr': "1:1",
+      'sq': "1:1",
+      'tk': "1:1",
+      'ba': "1:1",
+      'tp': "1:1",
+      'b6': "1:0.6",
+      'jl': "1:0.75",
+      'cm': "1:0.75",
+      'vs': "1:1",
+    },
+    "bilt"    : {
+      'as': "1:1",
+      'av': "1:1",
+      'ua': "1:1",
+      'af': "1:1",
+      'vs': "1:1",
+      'ek': "1:1",
+      'ba': "1:1",
+      'cx': "1:1",
+      'tk': "1:1",
+      'ei': "1:1",
+      'ib': "1:1",
+      'ac': "1:1",
+      'tp': "1:1",
+      'wn': "1:1",
+      'jl': "1:1",
+      'qr': "1:1",
+      'ey': "1:1",
+      'b6': "1:1",
+    },
+    "marriott": {
+      'a3': "3:1.25",
+      //'su': "3:1.25",
+      'am': "3:1.25",
+      'ac': "3:1.25",
+      'ca': "3:1.25",
+      'af': "3:1.25",
+      //'kl': "3:1.25",
+      //'ro': "3:1.25",
+      'nz': "200:1.25",
+      'as': "3:1.25",
+      'nh': "3:1.25",
+      'aa': "3:1",
+      //'oz': "3:1.25",
+      'av': "3:1",
+      'ba': "3:1.25",
+      'ib': "3:1.25",
+      'cx': "3:1.25",
+      'cz': "3:1.25",
+      'cm': "3:1.25",
+      'dl': "3:1",
+      'ek': "3:1.25",
+      'ei': "3:1.25",
+      'ey': "3:1.25",
+      'f9': "3:1.25",
+      'hu': "3:1.25",
+      'jl': "3:1.25",
+      //'b6': "6:1.25",
+      //'ke': "3:1.25",
+      'la': "3:1.25",
+      'qf': "3:1.25",
+      'qr': "3:1.25",
+      'sv': "3:1.25",
+      'sq': "3:1.25",
+      //'sa': "3:1.25",
+      'wn': "3:1.25",
+      'tp': "3:1.25",
+      'tg': "3:1.25",
+      'tk': "3:1.25",
+      'ua': "3:1.5",
+      'vs': "3:1.25",
+      'va': "3:1.25",
+      'vy': "3:1.25",
+      'et': "3:1.25",
+    },
+  };
+
+  var chart = d3.select("#chart").append("svg").chart("Sankey.Path");
+  chart
+  // .name(label)
+  .colorNodes(function(name, node) {
+    if (_.find(flatAirlines, o => o.name === name)) {
+      // return _.find(flatAirlines, o => o.name === name).color;
+      return null;
+    }
+    if (node.sc === 'chase') { return chaseColor; }
+    if (node.sc === 'amex') { return amexColor; }
+    if (node.sc === 'citi') { return citiColor; }
+    if (node.sc === 'c1') { return c1Color; }
+    if (node.sc === 'bilt') { return biltColor; }
+    if (node.sc === 'marriott') { return marriottColor; }
+    if (node.sc === 'none') { return noneColor; }
+  })
+  .colorLinks(function(link) {
+    if ([link.source.sc, link.target.sc].indexOf('chase') >= 0) { return chaseColor; }
+    if ([link.source.sc, link.target.sc].indexOf('citi') >= 0) { return citiColor; }
+    if ([link.source.sc, link.target.sc].indexOf('amex') >= 0) { return amexColor; }
+    if ([link.source.sc, link.target.sc].indexOf('c1') >= 0) { return c1Color; }
+    if ([link.source.sc, link.target.sc].indexOf('bilt') >= 0) { return biltColor; }
+    if ([link.source.sc, link.target.sc].indexOf('marriott') >= 0) { return marriottColor; }
+    if ([link.source.sc, link.target.sc].indexOf('none') >= 0) { return noneColor; }
+  })
+  .on("link:mouseover", (link) => {
+    var $box = $("#box"),
+    target = link.target,
+    source = link.source;
+
+    if (source.sc === "none" || target.sc === "none") {
+      $box.hide();
+      return;
+    }
+
+    if (source.sc === "chase" || source.sc === "amex" ||  source.sc === "citi" || source.sc === "c1" || source.sc === "bilt" || source.sc === "marriott" || source.sc === "none") {
+      [target, source] = [source, target];
+    }
+    var rate = rates[target.sc] ? (rates[target.sc][source.sc] || "?:?") : "?:?";
+
+    $box.show()
+    .html(`${target.name} <strong>${rate}</strong> ${source.name}`);
+    var x = (target.x + target.dx + source.x + source.dx - $box.width()) / 2 + $("#chart").position().left,
+    y = (target.y + target.dy + source.y + source.dy + link.dy - $box.height()) / 2;
+    $box.css({
+      top : y + "px",
+      left: x + "px",
+    });
+  })
+  .on("link:mouseout", () => {
+    $("#box").hide();
+  })
+  .nodeWidth(15)
+  .nodePadding(3)
+  .spread(true)
+  .iterations(0)
+  .draw(data);
+
+  _.map(flatAirlines, o => {
+    const iata = o.name.toLowerCase().match(/\[.{2}\]/)[0].replace('[', '').replace(']', '').toUpperCase();
+    const dataId = `[data-node-id="${o.name.toLowerCase().replace(/\s/g, '-')}"]`
+    console.log(`${dataId} rect`, o);
+    SVG.select(`${dataId} rect.airlineLogo`).fill(SVG('fake').image(`logos/${iata}.png`, 15, 15));
+    SVG.select(`${dataId} rect.allianceLogo`).fill(SVG('fake').image(`logos/${o.type}.png?x-oss-process=image/resize,w_20,limit_1/format,jpg/interlace,1`, 15, 15));
+  })
+
+  </script>
+
 </body>
 </html>
