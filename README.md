@@ -5,11 +5,11 @@ This is a chart to visually represent the transfer partnerships between rewards 
 Live Demo -> [https://uscreditcardguide.github.io/Wings-of-the-Points/index.html](https://uscreditcardguide.github.io/Wings-of-the-Points/index.html)
 
 
-Transfer ratios → [HTML table](https://uscreditcardguide.github.io/Wings-of-the-Points/table.html)
+Transfer ratios → [US Credit Card Guide](https://www.uscreditcardguide.com/wings-points-points-miles-transfer-chart-amex-chase-citi-spg-marriott/)
 
 ## Local preview
 
-Clone or download the repository and double-click `index.html` for the chart or `table.html` for the table. Both pages are ready to open in a browser. The chart loads some of its libraries from CDNs.
+Clone or download the repository and double-click `index.html` to open the chart in a browser. The chart loads some of its libraries from CDNs.
 
 ## Updating transfers
 
@@ -17,9 +17,9 @@ Edit [the transfer CSV](_data/transfers.csv). Find the airline by its code and c
 
 For a new airline, add a row using an existing alliance value. The optional link_order field controls the order of the connections within an alliance. The row order controls the order of the airline nodes.
 
-GitHub Actions regenerates and publishes both pages after a push to `gh-pages`. Pull the branch after the workflow finishes to see the updated pages locally.
+GitHub Actions regenerates and publishes the chart after a push to `gh-pages`. Pull the branch after the workflow finishes to see the updated chart locally.
 
-To preview your own CSV edits before pushing, run this command from the repository folder with Python 3 installed, then refresh the pages in your browser.
+To preview your own CSV edits before pushing, run this command from the repository folder with Python 3 installed, then refresh the chart in your browser.
 
 ```sh
 python3 build.py

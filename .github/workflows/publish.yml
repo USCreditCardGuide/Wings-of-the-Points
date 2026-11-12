@@ -21,9 +21,9 @@ jobs:
       ready: ${{ steps.sync.outputs.ready }}
     steps:
       - uses: actions/checkout@v7
-      - name: Generate the chart and table
+      - name: Generate the chart
         run: python3 build.py
-      - name: Sync the generated pages to the repository
+      - name: Sync the generated chart to the repository
         id: sync
         shell: bash
         run: |
@@ -33,11 +33,11 @@ jobs:
             exit 0
           fi
 
-          git add index.html table.html
+          git add index.html
           if ! git diff --cached --quiet; then
             git -c user.name='github-actions[bot]' \
               -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
-              commit -m 'Regenerate the transfer chart and table'
+              commit -m 'Regenerate the transfer chart'
             git push origin HEAD:refs/heads/gh-pages
           fi
           echo 'ready=true' >> "$GITHUB_OUTPUT"
@@ -45,7 +45,7 @@ jobs:
         if: steps.sync.outputs.ready == 'true'
         run: |
           mkdir _site
-          cp -r index.html table.html README.md LICENSE.txt d3.chart.sankey.min.modified.js logos vendor _site/
+          cp -r index.html README.md LICENSE.txt d3.chart.sankey.min.modified.js logos vendor _site/
       - uses: actions/upload-pages-artifact@v4
         if: steps.sync.outputs.ready == 'true'
         with:
