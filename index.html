@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Wings of the Points</title>
   <script src="https://d3js.org/d3.v3.min.js"></script>
   <script src="vendor/d3.chart-0.3.0.min.js"></script>
@@ -51,6 +52,45 @@
   a:visited{
     color: blue;
   }
+  @media (max-width: 600px) {
+    #chart {
+      position: relative;
+    }
+    #mobile-detail {
+      position: absolute;
+      z-index: 1;
+      box-sizing: border-box;
+      width: max-content;
+      max-width: min(18rem, calc(100% - 16px));
+      padding: 8px 11px;
+      border: 1px solid #bacde1;
+      border-radius: 6px;
+      background: #fff;
+      color: #163652;
+      box-shadow: 0 3px 12px rgba(22, 54, 82, .18);
+      font: 600 14px/1.4 sans-serif;
+      overflow-wrap: anywhere;
+      pointer-events: none;
+    }
+    .airline-code {
+      cursor: pointer;
+    }
+    .airline-code text {
+      fill: #17466e;
+      font-weight: 700;
+    }
+    .airline-code:focus-visible .airline-tap-area {
+      stroke: #1565c0;
+      stroke-width: 1.5px;
+    }
+    .mobile-program-label {
+      paint-order: stroke;
+      stroke: #fff;
+      stroke-width: 3px;
+      stroke-linejoin: round;
+      font-weight: 600;
+    }
+  }
   </style>
 </head>
 <body>
@@ -60,7 +100,7 @@
   <div class="row col-xs-12 center-xs middle-xs">
     <div class="ui header large" style="margin-bottom: 10px;">Wings of the Points</div>
   </div>
-  <div id="chart"></div>
+  <div id="chart"><div id="mobile-detail" role="status" hidden></div></div>
   <div id="box"></div>
   <div class="row col-xs-12 center-xs middle-xs" style="text-decoration: none;">
     <div>
@@ -206,70 +246,179 @@
   var marriottColor = '#D32F2F';
   var noneColor = '#808080';
 
-  var chart = d3.select("#chart").append("svg").chart("Sankey.Path");
-  chart
-  // .name(label)
-  .colorNodes(function(name, node) {
-    if (_.find(flatAirlines, o => o.name === name)) {
-      return null;
-    }
-    if (node.sc === 'chase') { return chaseColor; }
-    if (node.sc === 'amex') { return amexColor; }
-    if (node.sc === 'citi') { return citiColor; }
-    if (node.sc === 'c1') { return c1Color; }
-    if (node.sc === 'bilt') { return biltColor; }
-    if (node.sc === 'marriott') { return marriottColor; }
-    if (node.sc === 'none') { return noneColor; }
-  })
-  .colorLinks(function(link) {
-    if ([link.source.sc, link.target.sc].indexOf('chase') >= 0) { return chaseColor; }
-    if ([link.source.sc, link.target.sc].indexOf('citi') >= 0) { return citiColor; }
-    if ([link.source.sc, link.target.sc].indexOf('amex') >= 0) { return amexColor; }
-    if ([link.source.sc, link.target.sc].indexOf('c1') >= 0) { return c1Color; }
-    if ([link.source.sc, link.target.sc].indexOf('bilt') >= 0) { return biltColor; }
-    if ([link.source.sc, link.target.sc].indexOf('marriott') >= 0) { return marriottColor; }
-    if ([link.source.sc, link.target.sc].indexOf('none') >= 0) { return noneColor; }
-  })
-  .on("link:mouseover", (link) => {
-    var $box = $("#box"),
-    target = link.target,
-    source = link.source;
+  var diagram = document.getElementById("chart");
+  var mobileDetail = document.getElementById("mobile-detail");
+  var narrowScreen = window.matchMedia("(max-width: 600px)");
+  var airlineCodes = new Set(flatAirlines.map(airline => airline.sc));
+  var rowsPerSide = Math.max(temp2.length + temp3.length, temp4.length + temp5.length);
+  var tapHeight = 24;
+  var openAirline = null;
 
-    if (source.sc === "none" || target.sc === "none") {
-      $box.hide();
-      return;
-    }
-
-    if (source.sc === "chase" || source.sc === "amex" ||  source.sc === "citi" || source.sc === "c1" || source.sc === "bilt" || source.sc === "marriott" || source.sc === "none") {
-      [target, source] = [source, target];
-    }
+  function describeTransfer(link) {
+    var { target, source } = link;
+    if (source.sc === "none" || target.sc === "none") return null;
+    if (rates[source.sc]) [target, source] = [source, target];
     var rate = rates[target.sc] ? (rates[target.sc][source.sc] || "?:?") : "?:?";
+    return { target, source, rate };
+  }
 
-    $box.show()
-    .html(`${target.name} <strong>${rate}</strong> ${source.name}`);
-    var x = (target.x + target.dx + source.x + source.dx - $box.width()) / 2 + $("#chart").position().left,
-    y = (target.y + target.dy + source.y + source.dy + link.dy - $box.height()) / 2;
-    $box.css({
-      top : y + "px",
-      left: x + "px",
+  function hideMobileDetail() {
+    if (openAirline) openAirline.setAttribute("aria-expanded", "false");
+    openAirline = null;
+    mobileDetail.hidden = true;
+  }
+
+  function showMobileDetail(text, x, y) {
+    mobileDetail.textContent = text;
+    mobileDetail.hidden = false;
+    var bounds = diagram.getBoundingClientRect();
+    var width = mobileDetail.offsetWidth;
+    var height = mobileDetail.offsetHeight;
+    var left = Math.min(bounds.width - width - 8, Math.max(8, x - bounds.left - width / 2));
+    var top = y + height + 12 <= Math.min(window.innerHeight, bounds.bottom)
+      ? y - bounds.top + 12
+      : y - bounds.top - height - 12;
+    mobileDetail.style.left = left + "px";
+    mobileDetail.style.top = Math.max(0, Math.min(bounds.height - height, top)) + "px";
+  }
+
+  function toggleAirline(element, airline) {
+    var wasOpen = openAirline === element;
+    hideMobileDetail();
+    if (wasOpen) return;
+    openAirline = element;
+    openAirline.setAttribute("aria-expanded", "true");
+    var anchor = element.getBoundingClientRect();
+    showMobileDetail(airline.name.trim(), anchor.left + anchor.width / 2, anchor.top + anchor.height / 2);
+  }
+
+  function compactLabels(svg) {
+    var labels = svg.selectAll(".node");
+    labels.filter(node => !airlineCodes.has(node.sc)).select("text")
+      .classed("mobile-program-label", true)
+      .attr("x", node => node.dx / 2)
+      .attr("text-anchor", "middle");
+
+    var airlineLabels = labels.filter(node => airlineCodes.has(node.sc))
+      .classed("airline-code", true)
+      .attr("role", "button")
+      .attr("tabindex", 0)
+      .attr("aria-label", node => node.name.trim())
+      .attr("aria-controls", "mobile-detail")
+      .attr("aria-expanded", "false");
+    airlineLabels.select("text").text(node => node.sc.toUpperCase());
+    airlineLabels.each(function(node) {
+      var bounds = this.getBBox();
+      d3.select(this).insert("rect", ":first-child")
+        .attr("class", "airline-tap-area")
+        .attr("x", bounds.x - 4)
+        .attr("y", (node.dy - tapHeight) / 2)
+        .attr("width", bounds.width + 8)
+        .attr("height", tapHeight)
+        .attr("fill", "transparent")
+        .attr("pointer-events", "all");
     });
-  })
-  .on("link:mouseout", () => {
-    $("#box").hide();
-  })
-  .nodeWidth(15)
-  .nodePadding(3)
-  .spread(true)
-  .iterations(0)
-  .draw(data);
+    airlineLabels.on("click.mobile", function(node) {
+      d3.event.stopPropagation();
+      toggleAirline(this, node);
+    }).on("keydown.mobile", function(node) {
+      if (d3.event.key === "Enter" || d3.event.key === " ") {
+        d3.event.preventDefault();
+        toggleAirline(this, node);
+      }
+    });
+  }
 
-  _.map(flatAirlines, o => {
-    const iata = o.name.toLowerCase().match(/\[.{2}\]/)[0].replace('[', '').replace(']', '').toUpperCase();
-    const dataId = `[data-node-id="${o.name.toLowerCase().replace(/\s/g, '-')}"]`
-    console.log(`${dataId} rect`, o);
-    SVG.select(`${dataId} rect.airlineLogo`).fill(SVG('fake').image(`logos/${iata}.png`, 15, 15));
-    SVG.select(`${dataId} rect.allianceLogo`).fill(SVG('fake').image(`logos/${o.type}.png?x-oss-process=image/resize,w_20,limit_1/format,jpg/interlace,1`, 15, 15));
-  })
+  function renderChart() {
+    var compact = narrowScreen.matches;
+    hideMobileDetail();
+    $("#box").hide();
+    diagram.style.minHeight = compact ? (rowsPerSide * tapHeight + 7) + "px" : "";
+    d3.select(diagram).select("svg").remove();
+    d3.select("#fake").html("");
+    var svg = d3.select(diagram).append("svg");
+    var chart = svg.chart("Sankey.Path");
+    chart
+    // .name(label)
+    .colorNodes(function(name, node) {
+      if (_.find(flatAirlines, o => o.name === name)) {
+        return null;
+      }
+      if (node.sc === 'chase') { return chaseColor; }
+      if (node.sc === 'amex') { return amexColor; }
+      if (node.sc === 'citi') { return citiColor; }
+      if (node.sc === 'c1') { return c1Color; }
+      if (node.sc === 'bilt') { return biltColor; }
+      if (node.sc === 'marriott') { return marriottColor; }
+      if (node.sc === 'none') { return noneColor; }
+    })
+    .colorLinks(function(link) {
+      if ([link.source.sc, link.target.sc].indexOf('chase') >= 0) { return chaseColor; }
+      if ([link.source.sc, link.target.sc].indexOf('citi') >= 0) { return citiColor; }
+      if ([link.source.sc, link.target.sc].indexOf('amex') >= 0) { return amexColor; }
+      if ([link.source.sc, link.target.sc].indexOf('c1') >= 0) { return c1Color; }
+      if ([link.source.sc, link.target.sc].indexOf('bilt') >= 0) { return biltColor; }
+      if ([link.source.sc, link.target.sc].indexOf('marriott') >= 0) { return marriottColor; }
+      if ([link.source.sc, link.target.sc].indexOf('none') >= 0) { return noneColor; }
+    })
+    .on("link:mouseover", link => {
+      if (compact) return;
+      var $box = $("#box");
+      var transfer = describeTransfer(link);
+      if (!transfer) {
+        $box.hide();
+        return;
+      }
+      var { target, source, rate } = transfer;
+
+      $box.show()
+      .html(target.name + " <strong>" + rate + "</strong> " + source.name);
+      var x = (target.x + target.dx + source.x + source.dx - $box.width()) / 2 + $("#chart").position().left,
+      y = (target.y + target.dy + source.y + source.dy + link.dy - $box.height()) / 2;
+      $box.css({
+        top : y + "px",
+        left: x + "px",
+      });
+    })
+    .on("link:mouseout", () => {
+      $("#box").hide();
+    })
+    .on("link:click", link => {
+      if (!compact) return;
+      var transfer = describeTransfer(link);
+      if (!transfer) return;
+      var { target, source, rate } = transfer;
+      d3.event.stopPropagation();
+      hideMobileDetail();
+      showMobileDetail(target.name + " " + rate + " " + source.name.trim(), d3.event.clientX, d3.event.clientY);
+    })
+    .nodeWidth(15)
+    .nodePadding(3)
+    .spread(true)
+    .iterations(0)
+    .draw(data);
+
+    _.map(flatAirlines, o => {
+      const iata = o.name.toLowerCase().match(/\[.{2}\]/)[0].replace('[', '').replace(']', '').toUpperCase();
+      const dataId = `[data-node-id="${o.name.toLowerCase().replace(/\s/g, '-')}"]`
+      console.log(`${dataId} rect`, o);
+      SVG.select(`${dataId} rect.airlineLogo`).fill(SVG('fake').image(`logos/${iata}.png`, 15, 15));
+      SVG.select(`${dataId} rect.allianceLogo`).fill(SVG('fake').image(`logos/${o.type}.png?x-oss-process=image/resize,w_20,limit_1/format,jpg/interlace,1`, 15, 15));
+    })
+
+    if (compact) compactLabels(svg);
+  }
+
+  renderChart();
+  var resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(renderChart, 120);
+  });
+  document.addEventListener("click", hideMobileDetail);
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") hideMobileDetail();
+  });
 
   </script>
 
