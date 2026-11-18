@@ -17,6 +17,8 @@ Edit [the transfer CSV](_data/transfers.csv). Find the airline by its code and c
 
 For a new airline, add a row using an existing alliance value. The optional link_order field controls the order of the connections within an alliance. The row order controls the order of the airline nodes.
 
+Add a dated [Change Log](#change-log) entry describing each update.
+
 GitHub Actions regenerates and publishes the chart after a push to `gh-pages`. Pull the branch after the workflow finishes to see the updated chart locally.
 
 To preview your own CSV edits before pushing, run this command from the repository folder with Python 3 installed, then refresh the chart in your browser.
@@ -52,6 +54,10 @@ python3 build.py
 
 
 ## Change Log
+
+### 2026-11-18
+
+* Added Cathay Pacific Asia Miles (CX) and Qantas Frequent Flyer (QF) as Chase UR transfer partners, both at 1:1.
 
 ### 2026-11.04
 
